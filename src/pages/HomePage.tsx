@@ -41,7 +41,7 @@ export default function HomePage() {
 
   const openWhatsApp = () => {
     window.open(
-      `https://wa.me/2349059988298?text=Hi, I'm interested in your services.`,
+      "https://wa.me/2349059988298?text=Hi, I'm interested in your services.",
       "_blank"
     );
   };
@@ -49,7 +49,6 @@ export default function HomePage() {
   const openCalendar = () => {
     window.open("https://calendar.app.google/5x5fCPbcmRxBkMCm6", "_blank");
   };
-
   const FadeInSection = ({
     children,
     className = "",
