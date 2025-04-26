@@ -50,12 +50,9 @@ export default function HomePage() {
     window.open("https://calendar.app.google/5x5fCPbcmRxBkMCm6", "_blank");
   };
   const FadeInSection = ({
-    children,
-    className = "",
-  }: {
-    children: any;
-    className: any;
-  }) => {
+    children, className = ""
+  }: { children: React.ReactNode; className?: string }) => {
+
     const [ref, inView] = useInView({
       triggerOnce: true,
       threshold: 0.4,
