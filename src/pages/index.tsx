@@ -6,3 +6,4 @@ export const ProjectDetails = lazy(() => import("./ProjectDetails"));
 export const ServicesDetails = lazy(() => import("./ServicesDetails"));
 export const About = lazy(() => import("./About"));
 export const Training = lazy(() => import("./Training"));
+export const Internship = lazy(() => import("./Intership"));

@@ -6,6 +6,7 @@ import {
   About,
   ConsultationForm,
   HomePage,
+  Internship,
   ProjectDetails,
   ServicesDetails,
   Training,
@@ -52,6 +53,14 @@ function App() {
         element={
           <Suspense fallback={<LoadingSpinner />}>
             <Training />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/internship"
+        element={
+          <Suspense fallback={<LoadingSpinner />}>
+            <Internship />
           </Suspense>
         }
       />
