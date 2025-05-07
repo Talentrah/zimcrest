@@ -17,9 +17,7 @@ import {
 } from "lucide-react";
 import WhatsAppLogo from "../components/WhatsAppLogo";
 import PortfolioSection from "../components/PortfolioSection";
-import Footer from "../components/Footer";
 import Seo from "../components/SEO";
-import { Navbar } from "../components/Navbar";
 import { whatWeDoServices } from "../data/whatwedo";
 
 export default function HomePage() {
@@ -50,9 +48,12 @@ export default function HomePage() {
     window.open("https://calendar.app.google/5x5fCPbcmRxBkMCm6", "_blank");
   };
   const FadeInSection = ({
-    children, className = ""
-  }: { children: React.ReactNode; className?: string }) => {
-
+    children,
+    className = "",
+  }: {
+    children: React.ReactNode;
+    className?: string;
+  }) => {
     const [ref, inView] = useInView({
       triggerOnce: true,
       threshold: 0.4,
@@ -75,9 +76,6 @@ export default function HomePage() {
     <>
       <Seo />
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-        {/* Header */}
-        <Navbar />
-
         {/* Enhanced Hero Section */}
         <section className="relative flex items-center min-h-screen">
           {/* Background Pattern */}
@@ -545,9 +543,6 @@ export default function HomePage() {
             </FadeInSection>
           </div>
         </section>
-
-        {/* Footer */}
-        <Footer />
 
         {/* Scroll to Top Button */}
         <motion.button

@@ -1,11 +1,9 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, CheckCircle2, ExternalLink } from "lucide-react";
-import Footer from "../components/Footer";
+import { CheckCircle2, ExternalLink } from "lucide-react";
 import { servicesData } from "../data/servicesData";
 import Seo from "../components/SEO";
-import logo from "../assets/zimcrest.png";
 
 export default function ServicesDetails() {
   const { id } = useParams<{ id: string }>();
@@ -42,23 +40,6 @@ export default function ServicesDetails() {
         image={service.image}
       />
       <div className="flex flex-col items-center justify-start w-full min-h-screen gap-20 px-4 bg-white">
-        {/* Header */}
-        <header className="fixed left-0 z-50 flex items-center justify-center w-full px-4 top-4">
-          <nav className="max-w-7xl w-full mx-auto rounded-[28px] shadow-sm border border-gray-300 backdrop-blur-lg bg-white/90">
-            <div className="flex items-center justify-between px-6 py-4 sm:py-6 lg:px-8">
-              <motion.button
-                onClick={() => navigate("/")}
-                className="flex items-center text-sm text-black transition-colors outline-none hover:text-primary-600 md:text-base"
-                whileHover={{ x: -5 }}
-              >
-                <ArrowLeft className="mr-2 md:size-5 size-4" />
-                Back to Services
-              </motion.button>
-              <img src={logo} alt="logo" className="w-10 aspect-[5/4]" />
-            </div>
-          </nav>
-        </header>
-
         {/* Hero Section */}
         <section className="w-full pt-32">
           <div className="container-custom">
@@ -189,9 +170,6 @@ export default function ServicesDetails() {
             </div>
           </div>
         </section>
-
-        {/* Footer */}
-        <Footer />
       </div>
     </>
   );

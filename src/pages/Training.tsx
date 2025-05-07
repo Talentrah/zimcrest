@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { faqs } from "../data/trainingFaq";
 import { Link } from "react-router-dom";
-import Footer from "../components/Footer";
 
 export default function Training() {
   const [activeTab, setActiveTab] = useState<string>("webDevelopment");
@@ -2243,7 +2242,6 @@ export default function Training() {
           </div>
         </div>
       </div>
-      <Footer />
     </section>
   );
 }

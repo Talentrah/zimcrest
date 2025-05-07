@@ -1,5 +1,4 @@
 import {
-  ArrowLeft,
   Award,
   Calendar,
   Flag,
@@ -16,16 +15,12 @@ import {
   Users,
   Users2,
 } from "lucide-react";
-import Footer from "../components/Footer";
 import Seo from "../components/SEO";
-import { motion } from "framer-motion";
-import { Link, useNavigate } from "react-router-dom";
-import logo from "../assets/zimcrest.png";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { teamMembers } from "../data/team";
 
 export default function About() {
-  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -39,21 +34,6 @@ export default function About() {
           unique needs of businesses across various industries."
       />
       <section className="relative flex flex-col items-center justify-start w-full gap-4 p-0 pb-10">
-        <header className="fixed left-0 z-50 flex items-center justify-center w-full px-4 top-4">
-          <nav className="max-w-7xl w-full mx-auto rounded-[28px] shadow-sm border border-gray-300 backdrop-blur-lg bg-white/90">
-            <div className="flex items-center justify-between px-6 py-4 sm:py-6 lg:px-8">
-              <motion.button
-                onClick={() => navigate("/")}
-                className="flex items-center text-sm text-black transition-colors outline-none hover:text-primary-600 md:text-base"
-                whileHover={{ x: -5 }}
-              >
-                <ArrowLeft className="mr-2 md:size-5 size-4" />
-                Back to home
-              </motion.button>
-              <img src={logo} alt="logo" className="w-10 aspect-[5/4]" />
-            </div>
-          </nav>
-        </header>
         <div className="relative w-full overflow-hidden">
           <div className="absolute inset-0">
             <img
@@ -1013,7 +993,6 @@ export default function About() {
             </div>
           </div>
         </div>
-        <Footer />
       </section>
     </>
   );

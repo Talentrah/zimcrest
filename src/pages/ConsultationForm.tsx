@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Send } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import Footer from "../components/Footer";
-import logo from "../assets/zimcrest.png";
+import { Send } from "lucide-react";
 
 export default function ConsultationForm() {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -42,18 +38,6 @@ export default function ConsultationForm() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <div className="px-4 py-12 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <motion.button
-              onClick={() => navigate("/")}
-              className="flex items-center text-gray-600 transition-colors hover:text-primary-600"
-              whileHover={{ x: -5 }}
-            >
-              <ArrowLeft className="w-5 h-5 mr-2" />
-              Back to Home
-            </motion.button>
-            <img src={logo} alt="logo" className="w-10 aspect-[5/4]" />
-          </div>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -199,7 +183,6 @@ export default function ConsultationForm() {
           </motion.div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
