@@ -5,6 +5,7 @@ import LoadingSpinner from "./components/LoadingSpinner";
 import {
   About,
   ConsultationForm,
+  HireTalent,
   HomePage,
   Internship,
   ProjectDetails,
@@ -61,6 +62,14 @@ function App() {
         element={
           <Suspense fallback={<LoadingSpinner />}>
             <Internship />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/hire-talent"
+        element={
+          <Suspense fallback={<LoadingSpinner />}>
+            <HireTalent />
           </Suspense>
         }
       />
