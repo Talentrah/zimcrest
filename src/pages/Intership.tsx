@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { faqs } from "../data/internshipFaq";
+import Footer from "../components/Footer";
 
 export default function Internship() {
   const [activeTab, setActiveTab] = useState<string>("overview");
@@ -1750,6 +1751,7 @@ export default function Internship() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

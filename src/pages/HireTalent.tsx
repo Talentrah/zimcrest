@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { categories, faqs } from "../data/hireData";
+import Footer from "../components/Footer";
 
 export default function HireTalent() {
   const [formData, setFormData] = useState({
@@ -511,6 +512,7 @@ export default function HireTalent() {
         </div>
       </div>
       {/* Footer */}
+      <Footer />
     </div>
   );
 }
