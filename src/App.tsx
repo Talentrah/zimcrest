@@ -8,6 +8,7 @@ import {
   HomePage,
   ProjectDetails,
   ServicesDetails,
+  Training,
 } from "./pages";
 
 function App() {
@@ -43,6 +44,14 @@ function App() {
         element={
           <Suspense fallback={<LoadingSpinner />}>
             <About />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/training"
+        element={
+          <Suspense fallback={<LoadingSpinner />}>
+            <Training />
           </Suspense>
         }
       />

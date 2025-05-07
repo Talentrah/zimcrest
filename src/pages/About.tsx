@@ -976,13 +976,13 @@ export default function About() {
               </div>
             </div>
             <div className="mt-12 text-center">
-              <a
-                href="#"
+              <Link
+                to="#"
                 className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium !rounded-button text-white bg-indigo-600 hover:bg-indigo-700 whitespace-nowrap cursor-pointer"
               >
                 Contact Us
                 <i className="ml-3 fas fa-arrow-right"></i>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
