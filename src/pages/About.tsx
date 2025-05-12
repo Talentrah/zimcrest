@@ -33,7 +33,7 @@ export default function About() {
           delivering custom software development services that cater to the
           unique needs of businesses across various industries."
       />
-      <section className="relative flex flex-col items-center justify-start w-full gap-4 p-0 pb-10">
+      <section className="relative flex flex-col items-center justify-start w-full gap-4 p-0">
         <div className="relative w-full overflow-hidden">
           <div className="absolute inset-0">
             <img
@@ -810,163 +810,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* Office Locations */}
-        <div className="w-full py-16 bg-gray-50">
-          <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h2 className="text-2xl font-extrabold text-center text-gray-900 sm:text-4xl">
-                Our Locations
-              </h2>
-              <p className="max-w-3xl mx-auto mt-4 text-base leading-tight text-center text-gray-500 md:text-lg">
-                Visit one of our offices across Africa or connect with us
-                virtually.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 gap-4 mt-16 md:grid-cols-2 lg:grid-cols-3">
-              {/* Harare HQ */}
-              <div className="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-sm hover:shadow-md">
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src="https://readdy.ai/api/search-image?query=Modern%2520Harare%2520Zimbabwe%2520skyline%2520with%2520contemporary%2520office%2520buildings%2520and%2520blue%2520sky%252C%2520urban%2520cityscape%2520showing%2520business%2520district%2520with%2520glass%2520skyscrapers%252C%2520clean%2520architectural%2520style%2520with%2520African%2520city%2520character&width=600&height=400&seq=12&orientation=landscape"
-                    alt="Harare Office"
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center">
-                    <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-full">
-                      <i className="text-primary-600 fas fa-building"></i>
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="text-base font-medium text-gray-900 md:text-lg">
-                        Harare, Zimbabwe
-                      </h3>
-                      <span className="text-sm font-medium text-primary-600">
-                        Headquarters
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mt-6 space-y-3">
-                    <div className="flex items-start">
-                      <i className="mt-1 mr-3 text-primary-600 fas fa-map-marker-alt"></i>
-                      <span className="text-gray-600">
-                        123 Innovation Drive, Borrowdale, Harare
-                      </span>
-                    </div>
-                    <div className="flex items-start">
-                      <i className="mt-1 mr-3 text-primary-600 fas fa-phone"></i>
-                      <span className="text-gray-600">+263 242 123 456</span>
-                    </div>
-                    <div className="flex items-start">
-                      <i className="mt-1 mr-3 text-primary-600 fas fa-envelope"></i>
-                      <span className="text-gray-600">
-                        harare@zimcresttech.com
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Johannesburg */}
-              <div className="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-sm hover:shadow-md">
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src="https://readdy.ai/api/search-image?query=Modern%2520Johannesburg%2520South%2520Africa%2520skyline%2520with%2520contemporary%2520office%2520buildings%2520and%2520blue%2520sky%252C%2520urban%2520cityscape%2520showing%2520business%2520district%2520with%2520glass%2520skyscrapers%252C%2520clean%2520architectural%2520style%2520with%2520African%2520city%2520character&width=600&height=400&seq=13&orientation=landscape"
-                    alt="Johannesburg Office"
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center">
-                    <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-full">
-                      <i className="text-primary-600 fas fa-building"></i>
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="text-base font-medium text-gray-900 md:text-lg">
-                        Johannesburg, South Africa
-                      </h3>
-                      <span className="text-sm font-medium text-primary-600">
-                        Regional Office
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mt-6 space-y-3">
-                    <div className="flex items-start">
-                      <i className="mt-1 mr-3 text-primary-600 fas fa-map-marker-alt"></i>
-                      <span className="text-gray-600">
-                        45 Tech Hub, Sandton, Johannesburg
-                      </span>
-                    </div>
-                    <div className="flex items-start">
-                      <i className="mt-1 mr-3 text-primary-600 fas fa-phone"></i>
-                      <span className="text-gray-600">+27 11 789 5432</span>
-                    </div>
-                    <div className="flex items-start">
-                      <i className="mt-1 mr-3 text-primary-600 fas fa-envelope"></i>
-                      <span className="text-gray-600">
-                        joburg@zimcresttech.com
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Nairobi */}
-              <div className="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-sm hover:shadow-md">
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src="https://readdy.ai/api/search-image?query=Modern%2520Nairobi%2520Kenya%2520skyline%2520with%2520contemporary%2520office%2520buildings%2520and%2520blue%2520sky%252C%2520urban%2520cityscape%2520showing%2520business%2520district%2520with%2520glass%2520skyscrapers%252C%2520clean%2520architectural%2520style%2520with%2520African%2520city%2520character&width=600&height=400&seq=14&orientation=landscape"
-                    alt="Nairobi Office"
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center">
-                    <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-full">
-                      <i className="text-primary-600 fas fa-building"></i>
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="text-base font-medium text-gray-900 md:text-lg">
-                        Nairobi, Kenya
-                      </h3>
-                      <span className="text-sm font-medium text-primary-600">
-                        Regional Office
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mt-6 space-y-3">
-                    <div className="flex items-start">
-                      <i className="mt-1 mr-3 text-primary-600 fas fa-map-marker-alt"></i>
-                      <span className="text-gray-600">
-                        78 Innovation Park, Westlands, Nairobi
-                      </span>
-                    </div>
-                    <div className="flex items-start">
-                      <i className="mt-1 mr-3 text-primary-600 fas fa-phone"></i>
-                      <span className="text-gray-600">+254 20 987 6543</span>
-                    </div>
-                    <div className="flex items-start">
-                      <i className="mt-1 mr-3 text-primary-600 fas fa-envelope"></i>
-                      <span className="text-gray-600">
-                        nairobi@zimcresttech.com
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="mt-12 text-center">
-              <Link
-                to="#"
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium !rounded-button text-white bg-indigo-600 hover:bg-indigo-700 whitespace-nowrap cursor-pointer"
-              >
-                Contact Us
-                <i className="ml-3 fas fa-arrow-right"></i>
-              </Link>
-            </div>
-          </div>
-        </div>
-
         {/* CTA Section */}
         <div className="w-full bg-indigo-700">
           <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
@@ -978,14 +821,13 @@ export default function About() {
             </h2>
             <div className="flex flex-wrap gap-4 mt-8 lg:mt-0 lg:flex-shrink-0">
               <Link
-                to="https://readdy.ai/home/0620df0e-66cb-4f1a-8d2c-20dffc7eab4f/4ebb332f-2628-47f5-823e-57765c6de887"
-                data-readdy="true"
+                to="/training"
                 className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium !rounded-button text-primary-600 bg-white hover:bg-indigo-50 whitespace-nowrap cursor-pointer"
               >
                 Explore Training Programs
               </Link>
               <Link
-                to="#"
+                to="/consultation"
                 className="inline-flex items-center px-6 py-3 border border-white text-base font-medium !rounded-button text-white bg-transparent hover:bg-indigo-600 whitespace-nowrap cursor-pointer"
               >
                 Contact Us
