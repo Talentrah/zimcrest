@@ -17,13 +17,9 @@ import {
 } from "lucide-react";
 import Seo from "../components/SEO";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 import { teamMembers } from "../data/team";
 
 export default function About() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   return (
     <>
       <Seo
@@ -125,8 +121,9 @@ export default function About() {
                         Our Vision
                       </h3>
                       <p className="mt-2 text-sm text-gray-600 md:text-base">
-                        To be the premier platform for tech talent in Africa,
-                        recognized globally for excellence and innovation.
+                        To become Africa's leading technology and talent
+                        development company recognized for innovation, impact,
+                        and excellence.
                       </p>
                     </div>
                   </div>
@@ -144,9 +141,9 @@ export default function About() {
                         Our Mission
                       </h3>
                       <p className="mt-2 text-sm text-gray-600 md:text-base">
-                        To empower African tech professionals through
-                        world-class training and connect them with meaningful
-                        opportunities that drive innovation and economic growth.
+                        To drive Africa's digital future by delivering solutions
+                        that solve real problems, empower people, and accelerate
+                        business growth.
                       </p>
                     </div>
                   </div>

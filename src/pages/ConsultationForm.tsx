@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 
@@ -11,10 +11,6 @@ export default function ConsultationForm() {
     projectType: "",
     message: "",
   });
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,7 +31,7 @@ export default function ConsultationForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white mt-14">
       <div className="px-4 py-12 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <motion.div
