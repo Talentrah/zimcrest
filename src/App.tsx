@@ -10,6 +10,7 @@ import LoadingSpinner from "./components/LoadingSpinner";
 import {
   About,
   ConsultationForm,
+  EarnRefer,
   HireTalent,
   HomePage,
   Internship,
@@ -77,6 +78,14 @@ function App() {
           element={
             <Suspense fallback={<LoadingSpinner />}>
               <HireTalent />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/earn-refer"
+          element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <EarnRefer />
             </Suspense>
           }
         />

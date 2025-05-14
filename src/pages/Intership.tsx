@@ -61,7 +61,7 @@ export default function Internship() {
   };
   const handlePaymentSelection = (isNigerian: boolean) => {
     setIsNigerianCandidate(isNigerian);
-    const amount = isNigerian ? "N50,000" : "$35";
+    const amount = isNigerian ? "N20,000" : "$15";
     window.location.href = `https://payment-provider.com/pay?amount=${amount}`; // Replace with actual payment URL
   };
   const PaymentModal = () => {
@@ -124,13 +124,13 @@ export default function Internship() {
             industry connections through our immersive internship programs.
           </p>
           <div className="mt-10">
-            <button
-              onClick={handleApplyNowClick}
+            <a
+              href="#application-form"
               className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium !rounded-button text-indigo-700 bg-white hover:bg-indigo-50 whitespace-nowrap cursor-pointer"
             >
               Apply Now
               <i className="ml-3 fas fa-arrow-right"></i>
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -167,16 +167,6 @@ export default function Internship() {
               }`}
             >
               Benefits
-            </button>
-            <button
-              onClick={() => setActiveTab("process")}
-              className={`py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap cursor-pointer ${
-                activeTab === "process"
-                  ? "border-indigo-500 text-indigo-600"
-                  : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-              }`}
-            >
-              Application Process
             </button>
             <button
               onClick={() => setActiveTab("stories")}
@@ -898,167 +888,7 @@ export default function Internship() {
           </div>
         </div>
       )}
-      {/* Application Process */}
-      {activeTab === "process" && (
-        <div className="py-16 bg-white">
-          <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h2 className="text-2xl font-extrabold text-center text-gray-900 sm:text-4xl">
-                Application Process
-              </h2>
-              <p className="max-w-3xl mx-auto mt-4 text-base leading-tight text-center text-gray-500 md:text-lg">
-                Our streamlined application process is designed to identify
-                candidates with both technical skills and the right mindset to
-                thrive in our collaborative environment.
-              </p>
-            </div>
-            <div className="max-w-4xl mx-auto mt-16">
-              <div className="relative">
-                {/* Process steps with connecting line */}
-                <div className="absolute inset-0 flex justify-center">
-                  <div className="h-full w-0.5 bg-indigo-200"></div>
-                </div>
-                {/* Step 1 */}
-                <div className="relative z-10">
-                  <div className="flex flex-col items-center md:flex-row">
-                    <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-white bg-indigo-600 rounded-full">
-                      <span className="text-lg font-bold">1</span>
-                    </div>
-                    <div className="w-full p-6 ml-4 bg-white border border-gray-100 rounded-lg shadow-sm">
-                      <h3 className="text-lg font-medium text-gray-900">
-                        Submit Application
-                      </h3>
-                      <p className="mt-2 text-gray-600">
-                        Complete the online application form with your personal
-                        information, educational background, and area of
-                        interest. Attach your resume and a brief statement of
-                        purpose.
-                      </p>
-                      <div className="flex items-center mt-4 text-sm text-indigo-600">
-                        <i className="mr-2 fas fa-clock"></i>
-                        <span>Timeline: 15-20 minutes to complete</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* Step 2 */}
-                <div className="relative z-10 mt-8">
-                  <div className="flex flex-col items-center md:flex-row">
-                    <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-white bg-indigo-600 rounded-full">
-                      <span className="text-lg font-bold">2</span>
-                    </div>
-                    <div className="w-full p-6 ml-4 bg-white border border-gray-100 rounded-lg shadow-sm">
-                      <h3 className="text-lg font-medium text-gray-900">
-                        Initial Screening
-                      </h3>
-                      <p className="mt-2 text-gray-600">
-                        Our team reviews your application to assess your
-                        qualifications, experience, and fit for the program.
-                        Selected candidates are contacted for the next stage.
-                      </p>
-                      <div className="flex items-center mt-4 text-sm text-indigo-600">
-                        <i className="mr-2 fas fa-clock"></i>
-                        <span>Timeline: 1-2 weeks after application</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* Step 3 */}
-                <div className="relative z-10 mt-8">
-                  <div className="flex flex-col items-center md:flex-row">
-                    <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-white bg-indigo-600 rounded-full">
-                      <span className="text-lg font-bold">3</span>
-                    </div>
-                    <div className="w-full p-6 ml-4 bg-white border border-gray-100 rounded-lg shadow-sm">
-                      <h3 className="text-lg font-medium text-gray-900">
-                        Technical Assessment
-                      </h3>
-                      <p className="mt-2 text-gray-600">
-                        Complete a role-specific assessment to demonstrate your
-                        technical skills and problem-solving abilities. This may
-                        include coding challenges, design exercises, or
-                        analytical tasks.
-                      </p>
-                      <div className="flex items-center mt-4 text-sm text-indigo-600">
-                        <i className="mr-2 fas fa-clock"></i>
-                        <span>Timeline: 3-5 days to complete</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* Step 4 */}
-                <div className="relative z-10 mt-8">
-                  <div className="flex flex-col items-center md:flex-row">
-                    <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-white bg-indigo-600 rounded-full">
-                      <span className="text-lg font-bold">4</span>
-                    </div>
-                    <div className="w-full p-6 ml-4 bg-white border border-gray-100 rounded-lg shadow-sm">
-                      <h3 className="text-lg font-medium text-gray-900">
-                        Interview
-                      </h3>
-                      <p className="mt-2 text-gray-600">
-                        Participate in a virtual interview with the team you'll
-                        be working with. This conversation focuses on your
-                        background, technical knowledge, and cultural fit with
-                        our organization.
-                      </p>
-                      <div className="flex items-center mt-4 text-sm text-indigo-600">
-                        <i className="mr-2 fas fa-clock"></i>
-                        <span>Timeline: 45-60 minute session</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* Step 5 */}
-                <div className="relative z-10 mt-8">
-                  <div className="flex flex-col items-center md:flex-row">
-                    <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-white bg-indigo-600 rounded-full">
-                      <span className="text-lg font-bold">5</span>
-                    </div>
-                    <div className="w-full p-6 ml-4 bg-white border border-gray-100 rounded-lg shadow-sm">
-                      <h3 className="text-lg font-medium text-gray-900">
-                        Onboarding
-                      </h3>
-                      <p className="mt-2 text-gray-600">
-                        Successful candidates receive an offer letter and begin
-                        the onboarding process. This includes orientation,
-                        meeting your mentor, and getting set up with all
-                        necessary tools and resources.
-                      </p>
-                      <div className="flex items-center mt-4 text-sm text-indigo-600">
-                        <i className="mr-2 fas fa-clock"></i>
-                        <span>Timeline: 1-2 weeks before start date</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-16 overflow-hidden bg-indigo-700 rounded-lg shadow-xl">
-                <div className="px-6 py-12 sm:px-12">
-                  <div className="text-center">
-                    <h3 className="text-2xl font-bold text-white">
-                      Ready to Apply?
-                    </h3>
-                    <p className="mt-4 text-indigo-100">
-                      Take the first step toward launching your tech career by
-                      submitting your application today.
-                    </p>
-                    <div className="mt-8">
-                      <button
-                        onClick={handleApplyNowClick}
-                        className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium !rounded-button text-indigo-700 bg-white hover:bg-indigo-50 whitespace-nowrap cursor-pointer"
-                      >
-                        Apply Now
-                        <i className="ml-3 fas fa-arrow-right"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+
       {/* Success Stories */}
       {activeTab === "pricing" && (
         <div className="py-16 bg-white">

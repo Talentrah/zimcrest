@@ -8,3 +8,4 @@ export const About = lazy(() => import("./About"));
 export const Training = lazy(() => import("./Training"));
 export const Internship = lazy(() => import("./Intership"));
 export const HireTalent = lazy(() => import("./HireTalent"));
+export const EarnRefer = lazy(() => import("./EarnRefer"));

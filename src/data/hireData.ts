@@ -6,6 +6,11 @@ type faqType = {
   question: string;
   answer: string;
 };
+type hireService = {
+  title: string;
+  description: string;
+  features: string[];
+};
 export const categories: categoryType[] = [
   { icon: "fas fa-laptop-code", title: "Frontend Developers" },
   { icon: "fas fa-server", title: "Backend Developers" },
@@ -44,5 +49,41 @@ export const faqs: faqType[] = [
     question: "What engagement models do you support?",
     answer:
       "We support various engagement models including full-time hires, contract-to-hire, and project-based contracts, depending on your specific needs.",
+  },
+];
+
+export const hireServices: hireService[] = [
+  {
+    title: "Staff Augmentation",
+    description:
+      "Extend your team with our skilled professionals who integrate seamlessly with your existing workforce.",
+    features: [
+      "Immediate resource availability",
+      "Flexible scaling options",
+      "Cost-effective solution",
+      "Quality assurance",
+    ],
+  },
+  {
+    title: "Dedicated Teams",
+    description:
+      "Get a complete, self-managed team that works exclusively on your project with full commitment.",
+    features: [
+      "Full-time dedication",
+      "End-to-end delivery",
+      "Agile methodology",
+      "Regular reporting",
+    ],
+  },
+  {
+    title: "Project Outsourcing",
+    description:
+      "Outsource your entire project to our experienced team for efficient delivery and management.",
+    features: [
+      "Requirements analysis",
+      "Custom solution development",
+      "Quality assurance",
+      "Ongoing support",
+    ],
   },
 ];

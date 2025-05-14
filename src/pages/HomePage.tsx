@@ -447,21 +447,21 @@ export default function HomePage() {
             <div className="grid gap-4 md:grid-cols-3">
               {[
                 {
-                  name: "Sarah Johnson",
+                  name: "Abiodun Adenle",
                   role: "CTO, TechStart Inc",
                   content:
                     "Zimcrest delivered our project on time and exceeded our expectations. Their team's expertise and communication were outstanding.",
                   rating: 5,
                 },
                 {
-                  name: "Michael Chen",
+                  name: "Sayo Makinwa",
                   role: "Founder, EcoTrade",
                   content:
                     "Working with Zimcrest was a game-changer for our business. They transformed our vision into reality with exceptional attention to detail.",
                   rating: 5,
                 },
                 {
-                  name: "Emma Davis",
+                  name: "Ouwatosin Idowu",
                   role: "Product Manager, FinFlow",
                   content:
                     "The team at Zimcrest is highly professional and skilled. They provided innovative solutions to our complex requirements.",

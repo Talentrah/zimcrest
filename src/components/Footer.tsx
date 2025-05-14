@@ -9,7 +9,9 @@ const Footer: React.FC = () => {
       <div className="w-full px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div>
-            <img src={logoBig} alt="logo" className="object-contain w-28" />
+            <Link to={"/"}>
+              <img src={logoBig} alt="logo" className="object-contain w-28" />
+            </Link>
             <p className="text-gray-300">
               Connecting top tech talent with innovative companies since 2018.
             </p>
@@ -33,7 +35,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li>
                 <Link
-                  to="#"
+                  to="/hire-talent"
                   className="text-gray-300 cursor-pointer hover:text-white"
                 >
                   Hire Talent
@@ -41,7 +43,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  to="#"
+                  to="/internship"
                   className="text-gray-300 cursor-pointer hover:text-white"
                 >
                   Internship Programs
@@ -49,7 +51,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  to="#"
+                  to="/training"
                   className="text-gray-300 cursor-pointer hover:text-white"
                 >
                   Tech Training
@@ -57,7 +59,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  to="#"
+                  to="/consultation"
                   className="text-gray-300 cursor-pointer hover:text-white"
                 >
                   Consulting
@@ -70,10 +72,26 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li>
                 <Link
-                  to="#"
+                  to="/"
                   className="text-gray-300 cursor-pointer hover:text-white"
                 >
-                  About Us
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/about"
+                  className="text-gray-300 cursor-pointer hover:text-white"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/consultation"
+                  className="text-gray-300 cursor-pointer hover:text-white"
+                >
+                  Consultation
                 </Link>
               </li>
             </ul>
@@ -81,12 +99,6 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="mb-4 text-lg font-semibold">Contact</h3>
             <ul className="space-y-2">
-              <li className="flex items-start">
-                <i className="mt-1 mr-2 text-indigo-400 fas fa-map-marker-alt"></i>
-                <span className="text-gray-300">
-                  123 Tech Avenue, Innovation District, Harare
-                </span>
-              </li>
               <li className="flex items-center">
                 <i className="mr-2 text-indigo-400 fas fa-phone"></i>
                 <span className="text-gray-300">+234 (0)905 998 8298</span>

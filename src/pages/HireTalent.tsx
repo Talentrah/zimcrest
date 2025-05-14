@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { categories, faqs } from "../data/hireData";
+import { categories, faqs, hireServices } from "../data/hireData";
 
 export default function HireTalent() {
   const [formData, setFormData] = useState({
@@ -67,7 +67,7 @@ export default function HireTalent() {
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-2xl font-extrabold text-center text-gray-900 md:text-4xl">
-              Why Choose ZimcrestTech Talent
+              Why Choose Our Talent
             </h2>
             <p className="max-w-3xl mx-auto mt-4 text-base leading-tight text-center text-gray-500 md:text-lg">
               We connect you with pre-vetted tech professionals who have been
@@ -112,6 +112,29 @@ export default function HireTalent() {
                   ensure success.
                 </p>
               </div>
+              {hireServices.map((service) => (
+                <div
+                  className="p-8 text-center rounded-lg bg-indigo-50"
+                  key={crypto.randomUUID()}
+                >
+                  <h3 className="mt-6 text-lg font-medium text-gray-900">
+                    {service.title}
+                  </h3>
+                  <p className="mt-2 text-base leading-tight text-gray-500">
+                    {service.description}
+                  </p>
+                  <ul className="flex flex-col items-start justify-start gap-0 mx-auto mt-4 list-disc list-outside w-fit">
+                    {service.features.map((list) => (
+                      <li
+                        key={crypto.randomUUID()}
+                        className="text-sm text-gray-700 md:text-base"
+                      >
+                        {list}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -174,8 +197,9 @@ export default function HireTalent() {
                     id="companyName"
                     value={formData.companyName}
                     onChange={handleChange}
-                    className="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                    className="block w-full px-4 py-3 border border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     required
+                    placeholder="Enter company name here..."
                   />
                 </div>
               </div>
@@ -192,7 +216,7 @@ export default function HireTalent() {
                     name="companySize"
                     value={formData.companySize}
                     onChange={handleChange}
-                    className="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                    className="block w-full px-4 py-3 border border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     required
                   >
                     <option value="">Select size</option>
@@ -218,8 +242,9 @@ export default function HireTalent() {
                     id="location"
                     value={formData.location}
                     onChange={handleChange}
-                    className="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                    className="block w-full px-4 py-3 border border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     required
+                    placeholder="Enter location here..."
                   />
                 </div>
               </div>
@@ -237,8 +262,9 @@ export default function HireTalent() {
                     id="contactName"
                     value={formData.contactName}
                     onChange={handleChange}
-                    className="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                    className="block w-full px-4 py-3 border border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     required
+                    placeholder="Enter contact name here..."
                   />
                 </div>
               </div>
@@ -256,8 +282,9 @@ export default function HireTalent() {
                     id="contactEmail"
                     value={formData.contactEmail}
                     onChange={handleChange}
-                    className="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                    className="block w-full px-4 py-3 border border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     required
+                    placeholder="Enter contact email here..."
                   />
                 </div>
               </div>
@@ -275,8 +302,9 @@ export default function HireTalent() {
                     id="contactPhone"
                     value={formData.contactPhone}
                     onChange={handleChange}
-                    className="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                    className="block w-full px-4 py-3 border border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     required
+                    placeholder="Enter phone number here..."
                   />
                 </div>
               </div>
@@ -293,7 +321,7 @@ export default function HireTalent() {
                     name="talentType"
                     value={formData.talentType}
                     onChange={handleChange}
-                    className="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                    className="block w-full px-4 py-3 border border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     required
                   >
                     <option value="">Select talent type</option>
@@ -324,8 +352,9 @@ export default function HireTalent() {
                     rows={4}
                     value={formData.projectDetails}
                     onChange={handleChange}
-                    className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                    className="block w-full px-4 py-3 border border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     required
+                    placeholder="Write here..."
                   ></textarea>
                 </div>
               </div>
@@ -342,7 +371,7 @@ export default function HireTalent() {
                     name="timeline"
                     value={formData.timeline}
                     onChange={handleChange}
-                    className="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                    className="block w-full px-4 py-3 border border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     required
                   >
                     <option value="">Select timeline</option>
@@ -367,7 +396,7 @@ export default function HireTalent() {
                     name="budgetRange"
                     value={formData.budgetRange}
                     onChange={handleChange}
-                    className="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                    className="block w-full px-4 py-3 border border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     required
                   >
                     <option value="">Select budget range</option>
