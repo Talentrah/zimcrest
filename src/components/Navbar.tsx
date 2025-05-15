@@ -41,7 +41,7 @@ export const Navbar = () => {
               <Link to={"/about"} className="nav-link">
                 About
               </Link>
-              <Link to={"/"} className="nav-link">
+              <Link to={"/earn-refer"} className="nav-link">
                 Refer & Earn
               </Link>
               <Link to={"/consultation"}>
@@ -82,33 +82,59 @@ export const Navbar = () => {
           aria-orientation="vertical"
           aria-labelledby="mobile-menu"
         >
-          <div className="px-6 py-4 space-y-4">
-            <button className="block w-full text-left nav-link" role="menuitem">
-              Home
-            </button>
-            <button className="block w-full text-left nav-link" role="menuitem">
-              Hire Talent
-            </button>
-            <button className="block w-full text-left nav-link" role="menuitem">
-              Internship
-            </button>
-            <button className="block w-full text-left nav-link" role="menuitem">
-              Training
-            </button>
-            <button className="block w-full text-left nav-link" role="menuitem">
-              About
-            </button>
-            <button className="block w-full text-left nav-link" role="menuitem">
-              Refer & Earn
-            </button>
-            <motion.button
-              className="w-full btn-primary"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+          <div className="px-6 py-4 space-y-4 text-center">
+            <Link
+              to={"/"}
+              className="block w-full text-left nav-link"
               role="menuitem"
             >
-              Get Started
-            </motion.button>
+              Home
+            </Link>
+            <Link
+              to={"/hire-talent"}
+              className="block w-full text-left nav-link"
+              role="menuitem"
+            >
+              Hire Talent
+            </Link>
+            <Link
+              to={"/internship"}
+              className="block w-full text-left nav-link"
+              role="menuitem"
+            >
+              Internship
+            </Link>
+            <Link
+              to={"/training"}
+              className="block w-full text-left nav-link"
+              role="menuitem"
+            >
+              Training
+            </Link>
+            <Link
+              to={"/about"}
+              className="block w-full text-left nav-link"
+              role="menuitem"
+            >
+              About
+            </Link>
+            <Link
+              to={"/earn-refer"}
+              className="block w-full text-left nav-link"
+              role="menuitem"
+            >
+              Refer & Earn
+            </Link>
+            <Link to={"/consultation"}>
+              <motion.button
+                className="w-full mt-2 btn-primary"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                role="menuitem"
+              >
+                Get Started
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
       </motion.nav>

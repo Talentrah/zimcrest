@@ -81,13 +81,13 @@ export default function Internship() {
                 onClick={() => handlePaymentSelection(true)}
                 className="w-full py-3 px-4 border border-transparent !rounded-button text-white bg-indigo-600 hover:bg-indigo-700 whitespace-nowrap cursor-pointer"
               >
-                Pay ₦50,000 (Nigerian Candidates)
+                Pay ₦20,000 (Nigerian Candidates)
               </button>
               <button
                 onClick={() => handlePaymentSelection(false)}
                 className="w-full py-3 px-4 border border-transparent !rounded-button text-white bg-indigo-600 hover:bg-indigo-700 whitespace-nowrap cursor-pointer"
               >
-                Pay $35 (International Candidates)
+                Pay $15 (International Candidates)
               </button>
             </div>
             <button
@@ -915,7 +915,7 @@ export default function Internship() {
                   </div>
                   <div className="flex items-baseline mt-4">
                     <span className="text-2xl font-extrabold text-gray-900 md:text-5xl">
-                      ₦50,000
+                      ₦20,000
                     </span>
                     <span className="ml-1 text-base font-semibold text-gray-500 md:text-xl">
                       /program
@@ -970,7 +970,7 @@ export default function Internship() {
                   </div>
                   <div className="flex items-baseline mt-4">
                     <span className="text-2xl font-extrabold text-gray-900 md:text-5xl">
-                      $35
+                      $15
                     </span>
                     <span className="ml-1 text-base font-semibold text-gray-500 md:text-xl">
                       /program
