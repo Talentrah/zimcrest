@@ -349,8 +349,8 @@ export default function Internship() {
               </p>
             </div>
             <div className="grid grid-cols-1 gap-4 mt-12 md:grid-cols-2 lg:grid-cols-3">
-              <div className="overflow-hidden transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md">
-                <div className="h-48 overflow-hidden">
+              <div className="flex flex-col items-start justify-between w-full overflow-hidden transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md">
+                <div className="w-full h-48 overflow-hidden">
                   <img
                     src="https://readdy.ai/api/search-image?query=Software%2520developer%2520coding%2520on%2520multiple%2520screens%2520in%2520modern%2520tech%2520office%2520with%2520blue%2520ambient%2520lighting%252C%2520focused%2520on%2520code%2520with%2520programming%2520languages%2520visible%2520on%2520screen%252C%2520professional%2520workspace%2520with%2520minimal%2520distractions&width=600&height=400&seq=4&orientation=landscape"
                     alt="Software Development Intern"
@@ -407,8 +407,8 @@ export default function Internship() {
                   </div>
                 </div>
               </div>
-              <div className="overflow-hidden transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md">
-                <div className="h-48 overflow-hidden">
+              <div className="flex flex-col items-start justify-between w-full overflow-hidden transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md">
+                <div className="w-full h-48 overflow-hidden">
                   <img
                     src="https://readdy.ai/api/search-image?query=UI%2520UX%2520designer%2520working%2520on%2520digital%2520interface%2520designs%2520with%2520wireframes%2520and%2520color%2520palettes%2520visible%2520on%2520screen%252C%2520in%2520modern%2520creative%2520office%2520with%2520blue%2520ambient%2520lighting%252C%2520design%2520tools%2520and%2520tablet%2520on%2520desk%252C%2520professional%2520workspace&width=600&height=400&seq=5&orientation=landscape"
                     alt="UI/UX Design Intern"
@@ -471,8 +471,8 @@ export default function Internship() {
                   </div>
                 </div>
               </div>
-              <div className="overflow-hidden transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md">
-                <div className="h-48 overflow-hidden">
+              <div className="flex flex-col items-start justify-between w-full overflow-hidden transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md">
+                <div className="w-full h-48 overflow-hidden">
                   <img
                     src="https://readdy.ai/api/search-image?query=Data%2520analyst%2520working%2520with%2520visualizations%2520and%2520charts%2520on%2520multiple%2520screens%2520in%2520modern%2520tech%2520office%2520with%2520blue%2520ambient%2520lighting%252C%2520analyzing%2520statistics%2520and%2520trends%252C%2520professional%2520workspace%2520with%2520data%2520dashboards%2520visible&width=600&height=400&seq=6&orientation=landscape"
                     alt="Data Analytics Intern"
@@ -533,8 +533,8 @@ export default function Internship() {
                   </div>
                 </div>
               </div>
-              <div className="overflow-hidden transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md">
-                <div className="h-48 overflow-hidden">
+              <div className="flex flex-col items-start justify-between w-full overflow-hidden transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md">
+                <div className="w-full h-48 overflow-hidden">
                   <img
                     src="https://readdy.ai/api/search-image?query=Digital%2520marketing%2520professional%2520analyzing%2520campaign%2520metrics%2520and%2520social%2520media%2520analytics%2520on%2520computer%2520screens%2520in%2520modern%2520office%2520with%2520blue%2520ambient%2520lighting%252C%2520marketing%2520materials%2520and%2520content%2520calendar%2520visible%252C%2520professional%2520workspace&width=600&height=400&seq=7&orientation=landscape"
                     alt="Digital Marketing Intern"
@@ -595,8 +595,8 @@ export default function Internship() {
                   </div>
                 </div>
               </div>
-              <div className="overflow-hidden transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md">
-                <div className="h-48 overflow-hidden">
+              <div className="flex flex-col items-start justify-between w-full overflow-hidden transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md">
+                <div className="w-full h-48 overflow-hidden">
                   <img
                     src="https://readdy.ai/api/search-image?query=Cloud%2520engineer%2520working%2520with%2520server%2520infrastructure%2520diagrams%2520and%2520cloud%2520architecture%2520on%2520multiple%2520screens%2520in%2520modern%2520tech%2520office%2520with%2520blue%2520ambient%2520lighting%252C%2520focused%2520on%2520deployment%2520configurations%252C%2520professional%2520workspace&width=600&height=400&seq=8&orientation=landscape"
                     alt="Cloud Computing Intern"
@@ -654,8 +654,8 @@ export default function Internship() {
                   </div>
                 </div>
               </div>
-              <div className="overflow-hidden transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md">
-                <div className="h-48 overflow-hidden">
+              <div className="flex flex-col items-start justify-between w-full overflow-hidden transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md">
+                <div className="w-full h-48 overflow-hidden">
                   <img
                     src="https://readdy.ai/api/search-image?query=Cybersecurity%2520professional%2520monitoring%2520security%2520systems%2520and%2520analyzing%2520threat%2520data%2520on%2520multiple%2520screens%2520in%2520modern%2520tech%2520office%2520with%2520blue%2520ambient%2520lighting%252C%2520focused%2520on%2520security%2520protocols%252C%2520professional%2520workspace%2520with%2520network%2520diagrams&width=600&height=400&seq=9&orientation=landscape"
                     alt="Cybersecurity Intern"
