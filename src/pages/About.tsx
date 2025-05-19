@@ -8,7 +8,6 @@ import {
   Lightbulb,
   Maximize2,
   RefreshCcw,
-  Rocket,
   Scale,
   Star,
   Target,
@@ -34,24 +33,24 @@ export default function About() {
           <div className="absolute inset-0">
             <img
               src="https://readdy.ai/api/search-image?query=Modern%2520corporate%2520office%2520building%2520with%2520glass%2520facade%2520reflecting%2520blue%2520sky%2520and%2520clouds%252C%2520professional%2520business%2520environment%2520with%2520clean%2520architectural%2520lines%252C%2520tech%2520company%2520headquarters%2520with%2520landscaped%2520entrance%252C%2520subtle%2520lighting%2520creating%2520a%2520welcoming%2520atmosphere%252C%2520elegant%2520and%2520sophisticated%2520corporate%2520identity&width=1440&height=600&seq=1&orientation=landscape"
-              alt="About ZimcrestTech"
+              alt="About Zimcrest Technologies"
               className="object-cover object-top w-full h-full"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-900 to-transparent mix-blend-multiply"></div>
           </div>
           <div className="relative flex flex-col items-center justify-start px-4 mx-auto py-36 max-w-7xl sm:py-32 sm:px-6 lg:px-8">
             <h1 className="text-3xl font-extrabold tracking-tight text-center text-white sm:text-4xl lg:text-6xl">
-              About ZimcrestTech
+              About Zimcrest Technologies
             </h1>
             <p className="max-w-xl mt-6 text-base text-center text-indigo-100 md:text-xl">
               Empowering African tech talent and connecting innovative companies
-              with exceptional professionals since 2018.
+              with exceptional professionals since 2020.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
               <div className="inline-flex items-center px-4 py-2 bg-white rounded-full bg-opacity-20 backdrop-filter backdrop-blur-sm">
                 <Calendar className="mr-2 text-primary-800 size-4" />
                 <span className="text-sm font-medium text-white">
-                  Est. 2018
+                  Est. 2020
                 </span>
               </div>
               <div className="inline-flex items-center px-4 py-2 bg-white rounded-full bg-opacity-20 backdrop-filter backdrop-blur-sm">
@@ -80,11 +79,11 @@ export default function About() {
                 </h2>
                 <div className="mt-6 space-y-6 text-gray-600">
                   <p>
-                    Founded in 2018, ZimcrestTech began with a simple mission:
-                    to bridge the gap between African tech talent and global
-                    opportunities. What started as a small training initiative
-                    in Harare has grown into a comprehensive tech ecosystem
-                    serving multiple countries across Africa.
+                    Founded in 2020, Zimcrest Technologies began with a simple
+                    mission: to bridge the gap between African tech talent and
+                    global opportunities. What started as a small training
+                    initiative in Harare has grown into a comprehensive tech
+                    ecosystem serving multiple countries across Africa.
                   </p>
                   <p>
                     Our journey has been defined by a commitment to excellence,
@@ -94,8 +93,8 @@ export default function About() {
                     clients worldwide.
                   </p>
                   <p>
-                    Today, ZimcrestTech stands as a leader in tech talent
-                    development in Africa, with a proven track record of
+                    Today, Zimcrest Technologies stands as a leader in tech
+                    talent development in Africa, with a proven track record of
                     launching thousands of successful careers and supporting
                     businesses with exceptional tech professionals.
                   </p>
@@ -186,20 +185,20 @@ export default function About() {
               {/* Timeline line */}
               <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-indigo-200"></div>
 
-              {/* 2018 */}
+              {/* 2020 */}
               <div className="relative mb-8 md:mb-16">
                 <div className="flex flex-col-reverse items-center md:flex-row">
                   <div className="flex-1 mb-4 md:text-right md:pr-12 md:mb-0">
                     <div className="max-w-md p-6 bg-white rounded-lg shadow-sm md:ml-auto md:mr-0">
                       <h3 className="text-xl font-bold text-primary-600">
-                        2018
+                        2020
                       </h3>
                       <h4 className="mt-1 text-lg font-medium text-gray-900">
-                        Foundation
+                        Foundation & Early Growth
                       </h4>
                       <p className="mt-2 text-sm text-gray-600 md:text-base">
-                        ZimcrestTech was founded in Harare, Zimbabwe, with our
-                        first web development bootcamp training 15 students.
+                        Company Founded - Launched as a startup focusing on
+                        software development & IT consulting.
                       </p>
                     </div>
                   </div>
@@ -210,7 +209,7 @@ export default function About() {
                 </div>
               </div>
 
-              {/* 2019 */}
+              {/* 2021 */}
               <div className="relative mb-8 md:mb-16">
                 <div className="flex flex-col items-center md:flex-row">
                   <div className="flex-1 hidden md:text-right md:pr-12 md:block"></div>
@@ -220,35 +219,34 @@ export default function About() {
                   <div className="flex-1 mb-4 md:pl-12 md:mb-0">
                     <div className="max-w-md p-6 bg-white rounded-lg shadow-sm md:mr-auto md:ml-0">
                       <h3 className="text-xl font-bold text-primary-600">
-                        2019
+                        2021
                       </h3>
                       <h4 className="mt-1 text-lg font-medium text-gray-900">
-                        Expansion
+                        Expansion & Talent Development
                       </h4>
                       <p className="mt-2 text-sm text-gray-600 md:text-base">
-                        Expanded our curriculum to include data science and
-                        UI/UX design. Opened a second training center in
-                        Bulawayo.
+                        First Internship Program - Introduced a structured tech
+                        internship initiative to train fresh graduates.
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* 2020 */}
+              {/* 2022  */}
               <div className="relative mb-8 md:mb-16">
                 <div className="flex flex-col-reverse items-center md:flex-row">
                   <div className="flex-1 mb-4 md:text-right md:pr-12 md:mb-0">
                     <div className="max-w-md p-6 bg-white rounded-lg shadow-sm md:ml-auto md:mr-0">
                       <h3 className="text-xl font-bold text-primary-600">
-                        2020
+                        2022
                       </h3>
                       <h4 className="mt-1 text-lg font-medium text-gray-900">
-                        Digital Transformation
+                        Growth & Partnerships
                       </h4>
                       <p className="mt-2 text-sm text-gray-600 md:text-base">
-                        Launched our virtual learning platform in response to
-                        the pandemic, reaching students across Africa.
+                        100+ Tech Talents Trained - Celebrated the first 100
+                        graduates placed in jobs or freelance roles.
                       </p>
                     </div>
                   </div>
@@ -259,7 +257,7 @@ export default function About() {
                 </div>
               </div>
 
-              {/* 2021 */}
+              {/* 2023  */}
               <div className="relative mb-8 md:mb-16">
                 <div className="flex flex-col items-center md:flex-row">
                   <div className="flex-1 hidden md:text-right md:pr-12 md:block"></div>
@@ -269,34 +267,34 @@ export default function About() {
                   <div className="flex-1 mb-4 md:pl-12 md:mb-0">
                     <div className="max-w-md p-6 bg-white rounded-lg shadow-sm md:mr-auto md:ml-0">
                       <h3 className="text-xl font-bold text-primary-600">
-                        2021
+                        2023
                       </h3>
                       <h4 className="mt-1 text-lg font-medium text-gray-900">
-                        Corporate Partnerships
+                        Global Expansion & Product Development
                       </h4>
                       <p className="mt-2 text-sm text-gray-600 md:text-base">
-                        Established partnerships with 20+ global tech companies
-                        for internships and job placements.
+                        1,000+ Alumni Network - Graduates now working at top
+                        tech firms globally.
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* 2022 */}
+              {/* 2024 */}
               <div className="relative mb-8 md:mb-16">
                 <div className="flex flex-col-reverse items-center md:flex-row">
                   <div className="flex-1 mb-4 md:text-right md:pr-12 md:mb-0">
                     <div className="max-w-md p-6 bg-white rounded-lg shadow-sm md:ml-auto md:mr-0">
                       <h3 className="text-xl font-bold text-primary-600">
-                        2022
+                        2024
                       </h3>
                       <h4 className="mt-1 text-lg font-medium text-gray-900">
-                        Regional Growth
+                        Market Leadership & Future Roadmap
                       </h4>
                       <p className="mt-2 text-sm text-gray-600 md:text-base">
-                        Expanded operations to South Africa, Kenya, and Rwanda.
-                        Reached milestone of 1,000 graduates.
+                        New R&D Lab - Established a research division for
+                        cutting-edge tech solutions.
                       </p>
                     </div>
                   </div>
@@ -307,7 +305,7 @@ export default function About() {
                 </div>
               </div>
 
-              {/* 2023 */}
+              {/* 2025 & Beyond */}
               <div className="relative mb-8 md:mb-16">
                 <div className="flex flex-col items-center md:flex-row">
                   <div className="flex-1 hidden md:text-right md:pr-12 md:block"></div>
@@ -317,42 +315,17 @@ export default function About() {
                   <div className="flex-1 mb-4 md:pl-12 md:mb-0">
                     <div className="max-w-md p-6 bg-white rounded-lg shadow-sm md:mr-auto md:ml-0">
                       <h3 className="text-xl font-bold text-primary-600">
-                        2023
+                        2025 & Beyond
                       </h3>
                       <h4 className="mt-1 text-lg font-medium text-gray-900">
-                        Recognition & Awards
+                        Looking Ahead
                       </h4>
                       <p className="mt-2 text-sm text-gray-600 md:text-base">
-                        Named "Best Tech Training Provider in Africa" at the
-                        African Tech Awards. Launched scholarship program.
+                        Global Tech Talent Hub - Aiming to become a top
+                        destination for emerging tech talent.
                       </p>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              {/* 2024 */}
-              <div className="relative">
-                <div className="flex flex-col-reverse items-center md:flex-row">
-                  <div className="flex-1 mb-4 md:text-right md:pr-12 md:mb-0">
-                    <div className="max-w-md p-6 bg-white rounded-lg shadow-sm md:ml-auto md:mr-0">
-                      <h3 className="text-xl font-bold text-primary-600">
-                        2024
-                      </h3>
-                      <h4 className="mt-1 text-lg font-medium text-gray-900">
-                        Innovation Hub
-                      </h4>
-                      <p className="mt-2 text-sm text-gray-600 md:text-base">
-                        Launched ZimcrestTech Innovation Hub, providing
-                        incubation and acceleration for tech startups across
-                        Africa.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="z-10 flex items-center justify-center w-12 h-12 bg-indigo-600 border-4 border-white rounded-full shadow">
-                    <Rocket className="text-white size-5" />
-                  </div>
-                  <div className="flex-1 hidden md:pl-12 md:block"></div>
                 </div>
               </div>
             </div>
@@ -367,7 +340,8 @@ export default function About() {
                 Our Core Values
               </h2>
               <p className="max-w-3xl mx-auto mt-4 text-base leading-tight text-center text-gray-500 md:text-lg">
-                The principles that guide everything we do at ZimcrestTech.
+                The principles that guide everything we do at Zimcrest
+                Technologies.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-8 mt-16 md:grid-cols-3">
@@ -451,8 +425,8 @@ export default function About() {
                 Our Leadership Team
               </h2>
               <p className="max-w-3xl mx-auto mt-4 text-base leading-tight text-center text-gray-500 md:text-lg">
-                Meet the experienced professionals guiding ZimcrestTech's vision
-                and operations.
+                Meet the experienced professionals guiding Zimcrest
+                Technologies's vision and operations.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-4 mt-16 lg:gap-12 sm:grid-cols-2 lg:grid-cols-3">
@@ -505,8 +479,8 @@ export default function About() {
                 Our Culture
               </h2>
               <p className="max-w-3xl mx-auto mt-4 text-base leading-tight text-center text-gray-500 md:text-lg">
-                The ZimcrestTech environment is built on collaboration, growth,
-                and purpose.
+                The Zimcrest Technologies environment is built on collaboration,
+                growth, and purpose.
               </p>
             </div>
             <div className="relative mt-16">
@@ -517,7 +491,7 @@ export default function About() {
                       <img
                         className="inset-0 object-cover w-full h-full"
                         src="https://readdy.ai/api/search-image?query=Modern%2520tech%2520office%2520with%2520diverse%2520African%2520professionals%2520collaborating%2520in%2520bright%2520open%2520workspace%252C%2520contemporary%2520design%2520with%2520glass%2520walls%2520and%2520collaborative%2520areas%252C%2520people%2520engaged%2520in%2520discussion%2520around%2520computers%2520and%2520whiteboards%252C%2520positive%2520work%2520environment%2520with%2520natural%2520light&width=800&height=600&seq=8&orientation=landscape"
-                        alt="ZimcrestTech workspace"
+                        alt="Zimcrest Technologies workspace"
                       />
                     </div>
                   </div>
@@ -710,7 +684,7 @@ export default function About() {
               </h2>
               <p className="max-w-3xl mx-auto mt-4 text-base leading-tight text-center text-gray-500 md:text-lg">
                 Hear from our graduates, partners, and team members about their
-                experience with ZimcrestTech.
+                experience with Zimcrest Technologies.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-8 mt-16 md:grid-cols-2 lg:grid-cols-3">
@@ -720,10 +694,10 @@ export default function About() {
                   <i className="text-4xl text-indigo-200 fas fa-quote-left"></i>
                 </div>
                 <p className="relative z-10 italic text-gray-600">
-                  "ZimcrestTech transformed my career. Their web development
-                  program gave me the skills and confidence to land a job at a
-                  global tech company. The instructors were exceptional and the
-                  career support was invaluable."
+                  "Zimcrest Technologies transformed my career. Their web
+                  development program gave me the skills and confidence to land
+                  a job at a global tech company. The instructors were
+                  exceptional and the career support was invaluable."
                 </p>
                 <div className="flex items-center mt-8">
                   <div className="flex-shrink-0">
@@ -751,9 +725,9 @@ export default function About() {
                 </div>
                 <p className="relative z-10 italic text-gray-600">
                   "As a hiring partner, we've been consistently impressed with
-                  the quality of talent from ZimcrestTech. Their graduates are
-                  well-prepared, technically skilled, and bring fresh
-                  perspectives to our teams."
+                  the quality of talent from Zimcrest Technologies. Their
+                  graduates are well-prepared, technically skilled, and bring
+                  fresh perspectives to our teams."
                 </p>
                 <div className="flex items-center mt-8">
                   <div className="flex-shrink-0">
@@ -780,10 +754,10 @@ export default function About() {
                   <i className="text-4xl text-indigo-200 fas fa-quote-left"></i>
                 </div>
                 <p className="relative z-10 italic text-gray-600">
-                  "ZimcrestTech's data science program provided exactly what I
-                  needed to transition into tech. The curriculum was rigorous,
-                  practical, and aligned with industry needs. I'm now working
-                  remotely for a US company."
+                  "Zimcrest Technologies's data science program provided exactly
+                  what I needed to transition into tech. The curriculum was
+                  rigorous, practical, and aligned with industry needs. I'm now
+                  working remotely for a US company."
                 </p>
                 <div className="flex items-center mt-8">
                   <div className="flex-shrink-0">
@@ -813,7 +787,7 @@ export default function About() {
             <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               <span className="block">Ready to start your tech journey?</span>
               <span className="block text-indigo-200">
-                Join ZimcrestTech today.
+                Join Zimcrest Technologies today.
               </span>
             </h2>
             <div className="flex flex-wrap gap-4 mt-8 lg:mt-0 lg:flex-shrink-0">

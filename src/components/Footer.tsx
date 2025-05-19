@@ -119,7 +119,7 @@ const Footer: React.FC = () => {
           <p className="text-base text-gray-400">
             © {new Date().getFullYear()} ZimcrestTech. All rights reserved.
           </p>
-          <div className="flex flex-wrap items-center justify-center w-full mt-4 space-x-6 md:mt-0">
+          <div className="flex flex-col flex-wrap items-center justify-center w-full mt-4 space-y-6 sm:space-x-6 sm:flex-row md:mt-0">
             <Link
               to="#"
               className="text-gray-400 cursor-pointer hover:text-white whitespace-nowrap"

@@ -17,12 +17,12 @@ export const faqs: faqType[] = [
   {
     question: "Is there a stipend provided during the internship?",
     answer:
-      "Yes, all interns receive a competitive monthly stipend based on their education level and the specific internship position. Housing assistance may also be available for interns relocating to our office locations.",
+      "No, this internship is unpaid. Interns will not receive a stipend or housing assistance.",
   },
   {
     question: "Are internships remote or onsite?",
     answer:
-      "We offer both remote and onsite internship opportunities. The location requirements depend on the specific role and team needs. Many positions offer hybrid options with some days in-office and others remote.",
+      "The internship is fully remote. All interns will work virtually and are not required to be onsite at any office location.",
   },
   {
     question: "How long is the internship program?",

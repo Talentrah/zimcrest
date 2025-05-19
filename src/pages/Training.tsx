@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { faqs } from "../data/trainingFaq";
-import { Link } from "react-router-dom";
+import googleImg from "../assets/icons8-google-48.png";
+import microsoftImg from "../assets/icons8-microsoft-48.png";
+import appleImg from "../assets/icons8-apple-50.png";
+import facebookImg from "../assets/icons8-facebook-48.png";
+import amazonImg from "../assets/icons8-amazon-48.png";
+import spotify from "../assets/icons8-spotify-48.png";
 
 export default function Training() {
   const [activeTab, setActiveTab] = useState<string>("webDevelopment");
@@ -1315,169 +1320,6 @@ export default function Training() {
           </div>
         </div>
       </div>
-      {/* Instructor Profiles */}
-      <div className="py-16 bg-white">
-        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-2xl font-extrabold text-center text-gray-900 sm:text-4xl">
-              Meet Our Instructors
-            </h2>
-            <p className="max-w-3xl mx-auto mt-4 text-base leading-tight text-center text-gray-500 md:text-lg">
-              Learn from industry experts with years of real-world experience
-              and a passion for teaching.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 mt-12 sm:grid-cols-2 lg:grid-cols-4">
-            {/* Instructor 1 */}
-            <div className="overflow-hidden transition-shadow duration-300 rounded-lg shadow-sm bg-gray-50 hover:shadow-md">
-              <div className="h-64 overflow-hidden">
-                <img
-                  src="https://readdy.ai/api/search-image?query=Professional%2520headshot%2520of%2520middle-aged%2520African%2520American%2520man%2520with%2520glasses%2520in%2520business%2520casual%2520attire%2520against%2520neutral%2520background%252C%2520confident%2520expression%252C%2520professional%2520lighting%252C%2520high%2520quality%2520portrait%2520suitable%2520for%2520tech%2520expert&width=400&height=500&seq=21&orientation=portrait"
-                  alt="Dr. James Wilson"
-                  className="object-cover object-top w-full h-full"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-medium text-gray-900">
-                  Dr. James Wilson
-                </h3>
-                <p className="text-sm font-medium text-primary-600">
-                  Web Development Lead
-                </p>
-                <p className="mt-3 text-sm text-gray-600">
-                  Former Senior Engineer at Microsoft with 15+ years of
-                  experience in web technologies. PhD in Computer Science from
-                  MIT.
-                </p>
-                <div className="flex mt-4 space-x-3">
-                  <Link
-                    to="#"
-                    className="text-gray-400 cursor-pointer hover:text-primary-600"
-                  >
-                    <i className="text-lg fab fa-linkedin"></i>
-                  </Link>
-                  <Link
-                    to="#"
-                    className="text-gray-400 cursor-pointer hover:text-primary-600"
-                  >
-                    <i className="text-lg fab fa-github"></i>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            {/* Instructor 2 */}
-            <div className="overflow-hidden transition-shadow duration-300 rounded-lg shadow-sm bg-gray-50 hover:shadow-md">
-              <div className="h-64 overflow-hidden">
-                <img
-                  src="https://readdy.ai/api/search-image?query=Professional%2520headshot%2520of%2520young%2520Asian%2520woman%2520with%2520long%2520dark%2520hair%2520in%2520business%2520casual%2520attire%2520against%2520neutral%2520background%252C%2520confident%2520expression%252C%2520professional%2520lighting%252C%2520high%2520quality%2520portrait%2520suitable%2520for%2520data%2520scientist&width=400&height=500&seq=22&orientation=portrait"
-                  alt="Dr. Sarah Chen"
-                  className="object-cover object-top w-full h-full"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-medium text-gray-900">
-                  Dr. Sarah Chen
-                </h3>
-                <p className="text-sm font-medium text-primary-600">
-                  Data Science Lead
-                </p>
-                <p className="mt-3 text-sm text-gray-600">
-                  Data Scientist with experience at Google and Amazon.
-                  Specializes in machine learning and AI. PhD in Statistics from
-                  Stanford.
-                </p>
-                <div className="flex mt-4 space-x-3">
-                  <Link
-                    to="#"
-                    className="text-gray-400 cursor-pointer hover:text-primary-600"
-                  >
-                    <i className="text-lg fab fa-linkedin"></i>
-                  </Link>
-                  <Link
-                    to="#"
-                    className="text-gray-400 cursor-pointer hover:text-primary-600"
-                  >
-                    <i className="text-lg fab fa-github"></i>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            {/* Instructor 3 */}
-            <div className="overflow-hidden transition-shadow duration-300 rounded-lg shadow-sm bg-gray-50 hover:shadow-md">
-              <div className="h-64 overflow-hidden">
-                <img
-                  src="https://readdy.ai/api/search-image?query=Professional%2520headshot%2520of%2520young%2520Latino%2520man%2520with%2520short%2520dark%2520hair%2520in%2520business%2520casual%2520attire%2520against%2520neutral%2520background%252C%2520confident%2520expression%252C%2520professional%2520lighting%252C%2520high%2520quality%2520portrait%2520suitable%2520for%2520cybersecurity%2520expert&width=400&height=500&seq=23&orientation=portrait"
-                  alt="Miguel Rodriguez"
-                  className="object-cover object-top w-full h-full"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-medium text-gray-900">
-                  Miguel Rodriguez
-                </h3>
-                <p className="text-sm font-medium text-primary-600">
-                  Cybersecurity Lead
-                </p>
-                <p className="mt-3 text-sm text-gray-600">
-                  Former Security Consultant for Fortune 500 companies. CISSP
-                  certified with 10+ years in ethical hacking and security
-                  systems.
-                </p>
-                <div className="flex mt-4 space-x-3">
-                  <Link
-                    to="#"
-                    className="text-gray-400 cursor-pointer hover:text-primary-600"
-                  >
-                    <i className="text-lg fab fa-linkedin"></i>
-                  </Link>
-                  <Link
-                    to="#"
-                    className="text-gray-400 cursor-pointer hover:text-primary-600"
-                  >
-                    <i className="text-lg fab fa-github"></i>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            {/* Instructor 4 */}
-            <div className="overflow-hidden transition-shadow duration-300 rounded-lg shadow-sm bg-gray-50 hover:shadow-md">
-              <div className="h-64 overflow-hidden">
-                <img
-                  src="https://readdy.ai/api/search-image?query=Professional%2520headshot%2520of%2520young%2520Black%2520woman%2520with%2520natural%2520hair%2520in%2520business%2520casual%2520attire%2520against%2520neutral%2520background%252C%2520confident%2520expression%252C%2520professional%2520lighting%252C%2520high%2520quality%2520portrait%2520suitable%2520for%2520UX%2520designer&width=400&height=500&seq=24&orientation=portrait"
-                  alt="Amara Johnson"
-                  className="object-cover object-top w-full h-full"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-medium text-gray-900">
-                  Amara Johnson
-                </h3>
-                <p className="text-sm font-medium text-primary-600">
-                  UI/UX Design Lead
-                </p>
-                <p className="mt-3 text-sm text-gray-600">
-                  Award-winning designer with experience at Apple and Airbnb.
-                  Masters in Human-Computer Interaction from Carnegie Mellon.
-                </p>
-                <div className="flex mt-4 space-x-3">
-                  <Link
-                    to="#"
-                    className="text-gray-400 cursor-pointer hover:text-primary-600"
-                  >
-                    <i className="text-lg fab fa-linkedin"></i>
-                  </Link>
-                  <Link
-                    to="#"
-                    className="text-gray-400 cursor-pointer hover:text-primary-600"
-                  >
-                    <i className="text-lg fab fa-dribbble"></i>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       {/* Training Benefits */}
       <div className="py-16 bg-primary-50">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -2015,25 +1857,25 @@ export default function Training() {
                 <div className="w-12 h-12 overflow-hidden bg-indigo-100 border-2 border-indigo-300 rounded-full">
                   <img
                     src="https://readdy.ai/api/search-image?query=Professional%2520headshot%2520of%2520young%2520Indian%2520man%2520with%2520short%2520dark%2520hair%2520in%2520business%2520casual%2520attire%2520against%2520neutral%2520background%252C%2520confident%2520smile%252C%2520professional%2520lighting%252C%2520high%2520quality%2520portrait&width=200&height=200&seq=25&orientation=squarish"
-                    alt="Raj Patel"
+                    alt="Chinonso Okafor"
                     className="object-cover w-full h-full"
                   />
                 </div>
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">
-                    Raj Patel
+                    Chinonso Okafor
                   </h3>
                   <p className="text-sm text-primary-600">
-                    Web Developer at Shopify
+                    Web 3 Developer at Polygon Labs
                   </p>
                 </div>
               </div>
               <p className="italic text-gray-600">
-                "The web development program at ZimcrestTech completely
-                transformed my career. The curriculum was comprehensive and
-                up-to-date with industry standards. Within a month of
-                graduating, I received multiple job offers and landed my dream
-                role at Shopify."
+                "The Web 3 development program at ZimcrestTech completely
+                transformed my career. The curriculum was current, hands-on, and
+                mapped to real industry tooling. Barely a month after
+                graduating, I had several offers and secured my dream role
+                building smart-contract tooling at Polygon Labs."
               </p>
               <div className="flex items-center mt-6">
                 <div className="flex text-yellow-400">
@@ -2054,25 +1896,25 @@ export default function Training() {
                 <div className="w-12 h-12 overflow-hidden bg-indigo-100 border-2 border-indigo-300 rounded-full">
                   <img
                     src="https://readdy.ai/api/search-image?query=Professional%2520headshot%2520of%2520young%2520white%2520woman%2520with%2520blonde%2520hair%2520in%2520business%2520casual%2520attire%2520against%2520neutral%2520background%252C%2520confident%2520smile%252C%2520professional%2520lighting%252C%2520high%2520quality%2520portrait&width=200&height=200&seq=26&orientation=squarish"
-                    alt="Emma Thompson"
+                    alt="Aisha Abdullahi"
                     className="object-cover w-full h-full"
                   />
                 </div>
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">
-                    Emma Thompson
+                    Aisha Abdullahi
                   </h3>
                   <p className="text-sm text-primary-600">
-                    Data Analyst at Netflix
+                    Product Designer at Flutterwave
                   </p>
                 </div>
               </div>
               <p className="italic text-gray-600">
-                "I had some programming experience but wanted to specialize in
-                data science. The course at ZimcrestTech provided exactly what I
-                needed - practical skills, real-world projects, and career
-                support. The instructors were incredibly knowledgeable and
-                supportive."
+                “I already knew basic design, but I wanted to specialise in
+                digital-product design. The UI/UX track at ZimcrestTech gave me
+                exactly what I needed—intense practice, portfolio-ready
+                projects, and direct mentoring. Thanks to the career-support
+                sessions, I now craft user-centred experiences at Flutterwave.”
               </p>
               <div className="flex items-center mt-6">
                 <div className="flex text-yellow-400">
@@ -2083,7 +1925,7 @@ export default function Training() {
                   <i className="fas fa-star-half-alt"></i>
                 </div>
                 <span className="ml-2 text-sm text-gray-500">
-                  Data Science Graduate
+                  Product Design Graduate
                 </span>
               </div>
             </div>
@@ -2093,25 +1935,25 @@ export default function Training() {
                 <div className="w-12 h-12 overflow-hidden bg-indigo-100 border-2 border-indigo-300 rounded-full">
                   <img
                     src="https://readdy.ai/api/search-image?query=Professional%2520headshot%2520of%2520young%2520Black%2520man%2520with%2520short%2520hair%2520in%2520business%2520casual%2520attire%2520against%2520neutral%2520background%252C%2520confident%2520smile%252C%2520professional%2520lighting%252C%2520high%2520quality%2520portrait&width=200&height=200&seq=27&orientation=squarish"
-                    alt="Marcus Johnson"
+                    alt="Tunde Ogunleye"
                     className="object-cover w-full h-full"
                   />
                 </div>
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">
-                    Marcus Johnson
+                    Tunde Ogunleye
                   </h3>
                   <p className="text-sm text-primary-600">
-                    UX Designer at Adobe
+                    Associate Product Manager at Interswitch
                   </p>
                 </div>
               </div>
               <p className="italic text-gray-600">
-                "Switching careers to UX design was intimidating, but the UI/UX
-                program at ZimcrestTech made the transition smooth. The
-                portfolio I built during the course helped me stand out to
-                employers, and the career coaching was invaluable in my job
-                search."
+                “Switching into product management felt daunting, but the PM
+                program at ZimcrestTech made the leap possible. The case
+                studies, roadmap workshops, and interview prep sharpened my
+                skills, and the portfolio I built helped me stand out. I'm now
+                driving feature launches at Interswitch.”
               </p>
               <div className="flex items-center mt-6">
                 <div className="flex text-yellow-400">
@@ -2122,7 +1964,7 @@ export default function Training() {
                   <i className="fas fa-star"></i>
                 </div>
                 <span className="ml-2 text-sm text-gray-500">
-                  UI/UX Design Graduate
+                  Product Manager Graduate
                 </span>
               </div>
             </div>
@@ -2135,7 +1977,13 @@ export default function Training() {
               <div className="grid grid-cols-2 gap-8 mt-10 sm:grid-cols-3 md:grid-cols-6">
                 <div className="flex flex-col items-center">
                   <div className="w-12 h-12 text-gray-400">
-                    <i className="text-4xl fab fa-google"></i>
+                    <img
+                      src={googleImg}
+                      alt="google"
+                      className="size-10"
+                      width={40}
+                      height={40}
+                    />
                   </div>
                   <span className="mt-2 text-sm font-medium text-gray-600">
                     Google
@@ -2143,7 +1991,13 @@ export default function Training() {
                 </div>
                 <div className="flex flex-col items-center">
                   <div className="w-12 h-12 text-gray-400">
-                    <i className="text-4xl fab fa-microsoft"></i>
+                    <img
+                      src={microsoftImg}
+                      alt="microsoft"
+                      className="size-10"
+                      width={40}
+                      height={40}
+                    />
                   </div>
                   <span className="mt-2 text-sm font-medium text-gray-600">
                     Microsoft
@@ -2151,7 +2005,13 @@ export default function Training() {
                 </div>
                 <div className="flex flex-col items-center">
                   <div className="w-12 h-12 text-gray-400">
-                    <i className="text-4xl fab fa-amazon"></i>
+                    <img
+                      src={amazonImg}
+                      alt="amazon"
+                      className="size-10"
+                      width={40}
+                      height={40}
+                    />
                   </div>
                   <span className="mt-2 text-sm font-medium text-gray-600">
                     Amazon
@@ -2159,7 +2019,13 @@ export default function Training() {
                 </div>
                 <div className="flex flex-col items-center">
                   <div className="w-12 h-12 text-gray-400">
-                    <i className="text-4xl fab fa-facebook"></i>
+                    <img
+                      src={facebookImg}
+                      alt="meta"
+                      className="size-10"
+                      width={40}
+                      height={40}
+                    />
                   </div>
                   <span className="mt-2 text-sm font-medium text-gray-600">
                     Meta
@@ -2167,7 +2033,13 @@ export default function Training() {
                 </div>
                 <div className="flex flex-col items-center">
                   <div className="w-12 h-12 text-gray-400">
-                    <i className="text-4xl fab fa-apple"></i>
+                    <img
+                      src={appleImg}
+                      alt="apple"
+                      className="size-10"
+                      width={40}
+                      height={40}
+                    />
                   </div>
                   <span className="mt-2 text-sm font-medium text-gray-600">
                     Apple
@@ -2175,7 +2047,13 @@ export default function Training() {
                 </div>
                 <div className="flex flex-col items-center">
                   <div className="w-12 h-12 text-gray-400">
-                    <i className="text-4xl fab fa-spotify"></i>
+                    <img
+                      src={spotify}
+                      alt="spotify"
+                      className="size-10"
+                      width={40}
+                      height={40}
+                    />
                   </div>
                   <span className="mt-2 text-sm font-medium text-gray-600">
                     Spotify

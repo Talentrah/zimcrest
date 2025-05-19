@@ -837,16 +837,17 @@ export default function Internship() {
                 <h3 className="text-2xl font-bold text-center text-gray-900">
                   Additional Perks
                 </h3>
-                <div className="grid grid-cols-1 gap-8 mt-8 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="grid grid-cols-1 gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-3">
                   <div className="p-6 text-center bg-white rounded-lg shadow-sm">
                     <div className="flex items-center justify-center w-12 h-12 mx-auto text-indigo-600 bg-indigo-100 rounded-full">
-                      <i className="text-xl fas fa-money-bill-wave"></i>
+                      <i className="fa-solid fa-briefcase"></i>
                     </div>
                     <h4 className="mt-4 text-lg font-medium text-gray-900">
-                      Competitive Stipend
+                      Flexible Work Options
                     </h4>
                     <p className="mt-2 text-sm text-gray-500">
-                      Monthly financial support to help with your expenses
+                      The internship is fully remote, allowing you to work from
+                      anywhere.
                     </p>
                   </div>
                   <div className="p-6 text-center bg-white rounded-lg shadow-sm">
@@ -854,10 +855,11 @@ export default function Internship() {
                       <i className="text-xl fas fa-laptop-house"></i>
                     </div>
                     <h4 className="mt-4 text-lg font-medium text-gray-900">
-                      Flexible Work Options
+                      Learning Resources
                     </h4>
                     <p className="mt-2 text-sm text-gray-500">
-                      Remote, onsite, or hybrid arrangements available
+                      Gain access to courses, workshops, and curated learning
+                      materials to support your professional growth.
                     </p>
                   </div>
                   <div className="p-6 text-center bg-white rounded-lg shadow-sm">
@@ -865,21 +867,35 @@ export default function Internship() {
                       <i className="text-xl fas fa-graduation-cap"></i>
                     </div>
                     <h4 className="mt-4 text-lg font-medium text-gray-900">
-                      Learning Resources
+                      Team Activities
                     </h4>
                     <p className="mt-2 text-sm text-gray-500">
-                      Access to courses, workshops, and learning materials
+                      Participate in virtual social events and team-building
+                      activities that foster collaboration and fun.
                     </p>
                   </div>
                   <div className="p-6 text-center bg-white rounded-lg shadow-sm">
                     <div className="flex items-center justify-center w-12 h-12 mx-auto text-indigo-600 bg-indigo-100 rounded-full">
-                      <i className="text-xl fas fa-users"></i>
+                      <i className="fa-solid fa-file"></i>
                     </div>
                     <h4 className="mt-4 text-lg font-medium text-gray-900">
-                      Team Activities
+                      CV Enhancement
                     </h4>
                     <p className="mt-2 text-sm text-gray-500">
-                      Social events and team-building activities
+                      Receive guidance and feedback to refine and enhance your
+                      CV for future opportunities.
+                    </p>
+                  </div>
+                  <div className="p-6 text-center bg-white rounded-lg shadow-sm">
+                    <div className="flex items-center justify-center w-12 h-12 mx-auto text-indigo-600 bg-indigo-100 rounded-full">
+                      <i className="fa-brands fa-linkedin-in"></i>
+                    </div>
+                    <h4 className="mt-4 text-lg font-medium text-gray-900">
+                      LinkedIn Optimization
+                    </h4>
+                    <p className="mt-2 text-sm text-gray-500">
+                      Get support in optimizing your LinkedIn profile to build
+                      your personal brand and attract recruiters.
                     </p>
                   </div>
                 </div>

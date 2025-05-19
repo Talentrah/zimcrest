@@ -86,42 +86,42 @@ export const Navbar = () => {
             <Link
               to={"/"}
               className="block w-full text-left nav-link"
-              role="menuitem"
+              onClick={() => setIsOpen(false)}
             >
               Home
             </Link>
             <Link
               to={"/hire-talent"}
               className="block w-full text-left nav-link"
-              role="menuitem"
+              onClick={() => setIsOpen(false)}
             >
               Hire Talent
             </Link>
             <Link
               to={"/internship"}
               className="block w-full text-left nav-link"
-              role="menuitem"
+              onClick={() => setIsOpen(false)}
             >
               Internship
             </Link>
             <Link
               to={"/training"}
               className="block w-full text-left nav-link"
-              role="menuitem"
+              onClick={() => setIsOpen(false)}
             >
               Training
             </Link>
             <Link
               to={"/about"}
               className="block w-full text-left nav-link"
-              role="menuitem"
+              onClick={() => setIsOpen(false)}
             >
               About
             </Link>
             <Link
               to={"/earn-refer"}
               className="block w-full text-left nav-link"
-              role="menuitem"
+              onClick={() => setIsOpen(false)}
             >
               Refer & Earn
             </Link>
@@ -130,7 +130,7 @@ export const Navbar = () => {
                 className="w-full mt-2 btn-primary"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                role="menuitem"
+                onClick={() => setIsOpen(false)}
               >
                 Get Started
               </motion.button>
