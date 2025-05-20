@@ -11,14 +11,19 @@ import {
   About,
   ConsultationForm,
   EarnRefer,
+  Error404,
   HireTalent,
   HomePage,
   Internship,
+  PrivacyPolicy,
   ProjectDetails,
   ServicesDetails,
+  SiteMap,
+  TermService,
   Training,
 } from "./pages";
 import RootLayout from "./layout/RootLayout";
+import LegalLayout from "./layout/LegalLayout";
 
 function App() {
   const router = createBrowserRouter(
@@ -89,6 +94,41 @@ function App() {
             </Suspense>
           }
         />
+
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <Error404 />
+            </Suspense>
+          }
+        />
+        <Route element={<LegalLayout />}>
+          <Route
+            path="/privacy-policy"
+            element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <PrivacyPolicy />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/terms-of-service"
+            element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <TermService />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/sitemap"
+            element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <SiteMap />
+              </Suspense>
+            }
+          />
+        </Route>
       </Route>
     )
   );

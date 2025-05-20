@@ -21,7 +21,7 @@ export default function About() {
   return (
     <>
       <Seo
-        title={"About Us - Zimcrest Technologies"}
+        title={"About - Zimcrest Technologies"}
         description="At Zimcrest, we are dedicated to transforming ideas into impactful
           digital solutions. As a leading technology company, we specialize in
           delivering custom software development services that cater to the
@@ -645,7 +645,7 @@ export default function About() {
                   exceptional and the career support was invaluable."
                 </p>
                 <div className="flex items-center mt-8">
-                  <div className="ml-4">
+                  <div className="">
                     <div className="text-base font-medium text-gray-900">
                       Chido Makunike
                     </div>
@@ -668,7 +668,7 @@ export default function About() {
                   fresh perspectives to our teams."
                 </p>
                 <div className="flex items-center mt-8">
-                  <div className="ml-4">
+                  <div className="">
                     <div className="text-base font-medium text-gray-900">
                       Dr. Emmanuel Okafor
                     </div>
@@ -691,7 +691,7 @@ export default function About() {
                   working remotely for a US company."
                 </p>
                 <div className="flex items-center mt-8">
-                  <div className="ml-4">
+                  <div className="">
                     <div className="text-base font-medium text-gray-900">
                       Tendai Moyo
                     </div>

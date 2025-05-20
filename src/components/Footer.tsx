@@ -121,22 +121,22 @@ const Footer: React.FC = () => {
           </p>
           <div className="flex flex-col flex-wrap items-center justify-center w-full mt-4 space-y-6 sm:space-y-0 sm:space-x-6 sm:flex-row md:mt-0">
             <Link
-              to="#"
+              to="/privacy-policy"
               className="text-gray-400 cursor-pointer hover:text-white whitespace-nowrap"
             >
               Privacy Policy
             </Link>
             <Link
-              to="#"
+              to="terms-of-service"
               className="text-gray-400 cursor-pointer hover:text-white whitespace-nowrap"
             >
               Terms of Service
             </Link>
             <Link
-              to="#"
+              to="/sitemap"
               className="text-gray-400 cursor-pointer hover:text-white whitespace-nowrap"
             >
-              Cookie Policy
+              Sitemap
             </Link>
           </div>
         </div>
