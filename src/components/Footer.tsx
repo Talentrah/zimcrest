@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
               <img src={logoBig} alt="logo" className="object-contain w-28" />
             </Link>
             <p className="text-gray-300">
-              Connecting top tech talent with innovative companies since 2018.
+              Connecting top tech talent with innovative companies since 2020.
             </p>
             <div className="flex mt-4 space-x-4">
               {socialLinks.map((link) => (
@@ -119,7 +119,7 @@ const Footer: React.FC = () => {
           <p className="text-base text-gray-400">
             © {new Date().getFullYear()} ZimcrestTech. All rights reserved.
           </p>
-          <div className="flex flex-col flex-wrap items-center justify-center w-full mt-4 space-y-6 sm:space-x-6 sm:flex-row md:mt-0">
+          <div className="flex flex-col flex-wrap items-center justify-center w-full mt-4 space-y-6 sm:space-y-0 sm:space-x-6 sm:flex-row md:mt-0">
             <Link
               to="#"
               className="text-gray-400 cursor-pointer hover:text-white whitespace-nowrap"

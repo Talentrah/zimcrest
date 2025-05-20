@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 import Seo from "../components/SEO";
 import { Link } from "react-router-dom";
-import { teamMembers } from "../data/team";
 
 export default function About() {
   return (
@@ -417,60 +416,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* Leadership Team */}
-        <div className="w-full py-16 bg-gray-50">
-          <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h2 className="text-2xl font-extrabold text-center text-gray-900 sm:text-4xl">
-                Our Leadership Team
-              </h2>
-              <p className="max-w-3xl mx-auto mt-4 text-base leading-tight text-center text-gray-500 md:text-lg">
-                Meet the experienced professionals guiding Zimcrest
-                Technologies's vision and operations.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 gap-4 mt-16 lg:gap-12 sm:grid-cols-2 lg:grid-cols-3">
-              {/* CEO */}
-              {teamMembers.map((member) => (
-                <div
-                  key={member.name}
-                  className="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-sm hover:shadow-md"
-                >
-                  <div className="overflow-hidden h-80">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="object-cover object-top w-full h-full"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900">
-                      {member.name}
-                    </h3>
-                    <p className="font-medium text-primary-600 text-md">
-                      {member.role}
-                    </p>
-                    <p className="mt-4 text-gray-600">{member.description}</p>
-                    <div className="flex mt-6 space-x-4">
-                      {member.socials.map((social) => (
-                        <Link
-                          key={crypto.randomUUID()}
-                          to={social.href}
-                          className="hover:text-primary-600"
-                        >
-                          {
-                            <social.icon className="text-gray-400 hover:text-primary-600" />
-                          }
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
         {/* Company Culture */}
         <div className="w-full py-16 overflow-hidden bg-white">
           <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -700,13 +645,6 @@ export default function About() {
                   exceptional and the career support was invaluable."
                 </p>
                 <div className="flex items-center mt-8">
-                  <div className="flex-shrink-0">
-                    <img
-                      className="object-cover w-12 h-12 rounded-full"
-                      src="https://readdy.ai/api/search-image?query=Professional%2520headshot%2520of%2520young%2520African%2520woman%2520with%2520natural%2520hair%2520in%2520business%2520casual%2520attire%2520against%2520neutral%2520background%252C%2520confident%2520smile%252C%2520professional%2520lighting%252C%2520high%2520quality%2520portrait&width=200&height=200&seq=9&orientation=squarish"
-                      alt="Chido Makunike"
-                    />
-                  </div>
                   <div className="ml-4">
                     <div className="text-base font-medium text-gray-900">
                       Chido Makunike
@@ -730,13 +668,6 @@ export default function About() {
                   fresh perspectives to our teams."
                 </p>
                 <div className="flex items-center mt-8">
-                  <div className="flex-shrink-0">
-                    <img
-                      className="object-cover w-12 h-12 rounded-full"
-                      src="https://readdy.ai/api/search-image?query=Professional%2520headshot%2520of%2520mature%2520African%2520man%2520with%2520glasses%2520in%2520business%2520attire%2520against%2520neutral%2520background%252C%2520confident%2520expression%252C%2520professional%2520lighting%252C%2520high%2520quality%2520portrait&width=200&height=200&seq=10&orientation=squarish"
-                      alt="Dr. Emmanuel Okafor"
-                    />
-                  </div>
                   <div className="ml-4">
                     <div className="text-base font-medium text-gray-900">
                       Dr. Emmanuel Okafor
@@ -760,13 +691,6 @@ export default function About() {
                   working remotely for a US company."
                 </p>
                 <div className="flex items-center mt-8">
-                  <div className="flex-shrink-0">
-                    <img
-                      className="object-cover w-12 h-12 rounded-full"
-                      src="https://readdy.ai/api/search-image?query=Professional%2520headshot%2520of%2520young%2520African%2520man%2520in%2520casual%2520business%2520attire%2520against%2520neutral%2520background%252C%2520confident%2520smile%252C%2520professional%2520lighting%252C%2520high%2520quality%2520portrait&width=200&height=200&seq=11&orientation=squarish"
-                      alt="Tendai Moyo"
-                    />
-                  </div>
                   <div className="ml-4">
                     <div className="text-base font-medium text-gray-900">
                       Tendai Moyo
