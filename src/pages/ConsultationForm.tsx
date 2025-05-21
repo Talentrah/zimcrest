@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Send } from "lucide-react";
+import { ArrowLeft, Send, Loader } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import logo from "../assets/zimcrest.png";
@@ -15,17 +15,75 @@ export default function ConsultationForm() {
     projectType: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    // You can add API call here to send the data
-  };
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setSubmitStatus({ type: null, message: "" });
+
+  try {
+    const apiUrl = '/api/send-email';
+    
+    console.log('Submitting to:', apiUrl);
+    console.log('Form data:', formData);
+    
+    const res = await fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    console.log('Response status:', res.status);
+
+    const contentType = res.headers.get('content-type');
+    if (!contentType || !contentType.includes('application/json')) {
+      const textResponse = await res.text();
+      console.error('Non-JSON response:', textResponse);
+      throw new Error('Server returned non-JSON response');
+    }
+
+    const data = await res.json();
+    console.log('Response data:', data);
+
+    if (res.ok) {
+      setSubmitStatus({ 
+        type: "success", 
+        message: "Your message has been sent successfully! We'll get back to you soon." 
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        projectType: "",
+        message: "",
+      });
+    } else {
+      setSubmitStatus({ 
+        type: "error", 
+        message: `Error: ${data.error || "Failed to send message"}` 
+      });
+    }
+  } catch (err) {
+    console.error('Form submission error:', err);
+    setSubmitStatus({ 
+      type: "error", 
+      message: "Something went wrong with the request. Please try again later." 
+    });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -66,6 +124,18 @@ export default function ConsultationForm() {
               Fill out the form below and we'll get back to you within 24 hours.
             </p>
 
+            {submitStatus.type && (
+              <div 
+                className={`p-4 mb-6 rounded-md ${
+                  submitStatus.type === "success" 
+                    ? "bg-green-50 text-green-800 border border-green-200" 
+                    : "bg-red-50 text-red-800 border border-red-200"
+                }`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div>
@@ -84,6 +154,7 @@ export default function ConsultationForm() {
                     onChange={handleChange}
                     className="form-input"
                     placeholder="John Doe"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -103,6 +174,7 @@ export default function ConsultationForm() {
                     onChange={handleChange}
                     className="form-input"
                     placeholder="john@example.com"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -121,6 +193,7 @@ export default function ConsultationForm() {
                     onChange={handleChange}
                     className="form-input"
                     placeholder="Your Company"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -139,6 +212,7 @@ export default function ConsultationForm() {
                     onChange={handleChange}
                     className="form-input"
                     placeholder="+1 (555) 000-0000"
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
@@ -157,6 +231,7 @@ export default function ConsultationForm() {
                   value={formData.projectType}
                   onChange={handleChange}
                   className="form-input"
+                  disabled={isSubmitting}
                 >
                   <option value="">Select a project type</option>
                   <option value="web-development">Web Development</option>
@@ -183,17 +258,28 @@ export default function ConsultationForm() {
                   rows={4}
                   className="h-20 resize-none form-input"
                   placeholder="Tell us about your project and requirements..."
+                  disabled={isSubmitting}
                 />
               </div>
 
               <motion.button
                 type="submit"
                 className="flex items-center justify-center w-full btn-primary"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                disabled={isSubmitting}
               >
-                <Send className="w-5 h-5 mr-2" />
-                Submit Request
+                {isSubmitting ? (
+                  <>
+                    <Loader className="w-5 h-5 mr-2 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5 mr-2" />
+                    Submit Request
+                  </>
+                )}
               </motion.button>
             </form>
           </motion.div>
