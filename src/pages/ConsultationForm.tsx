@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Send, Loader } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import Footer from "../components/Footer";
-import logo from "../assets/zimcrest.png";
+import { Loader, Send } from "lucide-react";
 
-export default function ConsultationForm() {
-  const navigate = useNavigate();
+function ConsultationForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,75 +11,146 @@ export default function ConsultationForm() {
     projectType: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | null;
     message: string;
   }>({ type: null, message: "" });
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [debugInfo, setDebugInfo] = useState<string | null>(null);
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-  setSubmitStatus({ type: null, message: "" });
+  // API base URL for Express server
+  const API_BASE_URL = process.env.NODE_ENV === 'development' 
+    ? '' // Use relative URLs in production (configure proxy in production)
+    : 'http://localhost:3000'; 
 
-  try {
-    const apiUrl = '/api/send-email';
-    
-    console.log('Submitting to:', apiUrl);
-    console.log('Form data:', formData);
-    
-    const res = await fetch(apiUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+    setDebugInfo(null);
 
-    console.log('Response status:', res.status);
+    try {
+      // Test the API connection first
+      try {
+        const testResponse = await fetch(`${API_BASE_URL}/api/test`);
+        if (!testResponse.ok) {
+          setDebugInfo(`API test failed with status: ${testResponse.status}`);
+        } else {
+          const testData = await testResponse.json();
+          setDebugInfo(`API test successful: ${JSON.stringify(testData)}`);
+        }
+      } catch (testError) {
+        setDebugInfo(`API test error: ${testError instanceof Error ? testError.message : 'Unknown error'}`);
+      }
 
-    const contentType = res.headers.get('content-type');
-    if (!contentType || !contentType.includes('application/json')) {
-      const textResponse = await res.text();
-      console.error('Non-JSON response:', textResponse);
-      throw new Error('Server returned non-JSON response');
-    }
-
-    const data = await res.json();
-    console.log('Response data:', data);
-
-    if (res.ok) {
-      setSubmitStatus({ 
-        type: "success", 
-        message: "Your message has been sent successfully! We'll get back to you soon." 
+      // Then attempt the actual form submission
+      const apiUrl = `${API_BASE_URL}/api/send-email`;
+      
+      console.log('Submitting to:', apiUrl);
+      console.log('Form data:', formData);
+      
+      const res = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
 
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        phone: "",
-        projectType: "",
-        message: "",
-      });
-    } else {
+      console.log('Response status:', res.status);
+      console.log('Response headers:', Object.fromEntries(res.headers.entries()));
+      
+      if (res.status === 404) {
+        setSubmitStatus({
+          type: "error",
+          message: "API endpoint not found. Please make sure the server is running on port 3000."
+        });
+        setDebugInfo(`API endpoint ${apiUrl} returned 404 Not Found. Make sure to run the Express server with 'node server/index.ts'`);
+        return;
+      }
+
+      // Get the response text first
+      const responseText = await res.text();
+      console.log('Raw response:', responseText);
+      
+      let responseData;
+      
+      // Try to parse as JSON if it looks like JSON
+      if (responseText.trim().startsWith('{') || responseText.trim().startsWith('[')) {
+        try {
+          responseData = JSON.parse(responseText);
+        } catch (parseError) {
+          console.error('JSON parse error:', parseError);
+          setDebugInfo(`Failed to parse JSON response: ${responseText.substring(0, 200)}...`);
+          throw new Error(`Invalid JSON response: ${parseError instanceof Error ? parseError.message : 'Parse error'}`);
+        }
+      } else {
+        // Not JSON - likely HTML error page
+        console.error('Non-JSON response received:', responseText);
+        setDebugInfo(`Server returned HTML instead of JSON. Response: ${responseText.substring(0, 500)}...`);
+        
+        if (res.status >= 500) {
+          throw new Error('Server error (500+). Please try again later.');
+        } else if (res.status >= 400) {
+          throw new Error(`Client error (${res.status}). Please check your request.`);
+        } else {
+          throw new Error('Server returned unexpected response format.');
+        }
+      }
+
+      if (res.ok) {
+        setSubmitStatus({ 
+          type: "success", 
+          message: "Your message has been sent successfully! We'll get back to you soon." 
+        });
+
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          projectType: "",
+          message: "",
+        });
+      } else {
+        setSubmitStatus({ 
+          type: "error", 
+          message: `Error: ${responseData?.error || `HTTP ${res.status} - Failed to send message`}` 
+        });
+        
+        if (responseData?.details) {
+          setDebugInfo(`Error details: ${responseData.details}`);
+        }
+      }
+    } catch (err) {
+      console.error('Form submission error:', err);
+      
+      let errorMessage = "Something went wrong with the request. Please try again later.";
+      let debugMessage = "";
+      
+      if (err instanceof TypeError && err.message.includes('fetch')) {
+        errorMessage = "Network error. Please check your internet connection and make sure the API server is running.";
+        debugMessage = `Network error: ${err.message}`;
+      } else if (err instanceof SyntaxError && err.message.includes('JSON')) {
+        errorMessage = "Server returned invalid response. Please try again.";
+        debugMessage = `JSON parsing error: ${err.message}`;
+      } else if (err instanceof Error) {
+        errorMessage = err.message;
+        debugMessage = `Error: ${err.message}`;
+      }
+      
       setSubmitStatus({ 
         type: "error", 
-        message: `Error: ${data.error || "Failed to send message"}` 
+        message: errorMessage
       });
+      
+      if (debugMessage) {
+        setDebugInfo(debugMessage);
+      }
+    } finally {
+      setIsSubmitting(false);
     }
-  } catch (err) {
-    console.error('Form submission error:', err);
-    setSubmitStatus({ 
-      type: "error", 
-      message: "Something went wrong with the request. Please try again later." 
-    });
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+  };
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -97,21 +164,9 @@ const handleSubmit = async (e: React.FormEvent) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white mt-14">
       <div className="px-4 py-12 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <motion.button
-              onClick={() => navigate("/")}
-              className="flex items-center text-gray-600 transition-colors hover:text-primary-600"
-              whileHover={{ x: -5 }}
-            >
-              <ArrowLeft className="w-5 h-5 mr-2" />
-              Back to Home
-            </motion.button>
-            <img src={logo} alt="logo" className="w-10 aspect-[5/4]" />
-          </div>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -133,6 +188,13 @@ const handleSubmit = async (e: React.FormEvent) => {
                 }`}
               >
                 {submitStatus.message}
+              </div>
+            )}
+
+            {debugInfo && (
+              <div className="p-4 mb-6 overflow-auto text-xs border border-orange-200 rounded-md bg-orange-50 text-orange-800 max-h-32">
+                <strong>Debug Info:</strong>
+                <pre>{debugInfo}</pre>
               </div>
             )}
 
@@ -285,7 +347,8 @@ const handleSubmit = async (e: React.FormEvent) => {
           </motion.div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
+
+export default ConsultationForm;

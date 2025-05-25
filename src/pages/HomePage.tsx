@@ -17,9 +17,7 @@ import {
 } from "lucide-react";
 import WhatsAppLogo from "../components/WhatsAppLogo";
 import PortfolioSection from "../components/PortfolioSection";
-import Footer from "../components/Footer";
 import Seo from "../components/SEO";
-import { Navbar } from "../components/Navbar";
 import { whatWeDoServices } from "../data/whatwedo";
 
 export default function HomePage() {
@@ -50,9 +48,12 @@ export default function HomePage() {
     window.open("https://calendar.app.google/5x5fCPbcmRxBkMCm6", "_blank");
   };
   const FadeInSection = ({
-    children, className = ""
-  }: { children: React.ReactNode; className?: string }) => {
-
+    children,
+    className = "",
+  }: {
+    children: React.ReactNode;
+    className?: string;
+  }) => {
     const [ref, inView] = useInView({
       triggerOnce: true,
       threshold: 0.4,
@@ -75,9 +76,6 @@ export default function HomePage() {
     <>
       <Seo />
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-        {/* Header */}
-        <Navbar />
-
         {/* Enhanced Hero Section */}
         <section className="relative flex items-center min-h-screen">
           {/* Background Pattern */}
@@ -449,21 +447,21 @@ export default function HomePage() {
             <div className="grid gap-4 md:grid-cols-3">
               {[
                 {
-                  name: "Sarah Johnson",
+                  name: "Abiodun Adenle",
                   role: "CTO, TechStart Inc",
                   content:
                     "Zimcrest delivered our project on time and exceeded our expectations. Their team's expertise and communication were outstanding.",
                   rating: 5,
                 },
                 {
-                  name: "Michael Chen",
+                  name: "Sayo Makinwa",
                   role: "Founder, EcoTrade",
                   content:
                     "Working with Zimcrest was a game-changer for our business. They transformed our vision into reality with exceptional attention to detail.",
                   rating: 5,
                 },
                 {
-                  name: "Emma Davis",
+                  name: "Ouwatosin Idowu",
                   role: "Product Manager, FinFlow",
                   content:
                     "The team at Zimcrest is highly professional and skilled. They provided innovative solutions to our complex requirements.",
@@ -545,9 +543,6 @@ export default function HomePage() {
             </FadeInSection>
           </div>
         </section>
-
-        {/* Footer */}
-        <Footer />
 
         {/* Scroll to Top Button */}
         <motion.button
