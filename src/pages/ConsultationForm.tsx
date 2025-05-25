@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Send } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import Footer from "../components/Footer";
-import logo from "../assets/zimcrest.png";
+import { Loader, Send } from "lucide-react";
 
-export default function ConsultationForm() {
-  const navigate = useNavigate();
+function ConsultationForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,15 +12,144 @@ export default function ConsultationForm() {
     message: "",
   });
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [debugInfo, setDebugInfo] = useState<string | null>(null);
+
+  // API base URL for Express server
+  const API_BASE_URL = process.env.NODE_ENV === 'development' 
+    ? '' // Use relative URLs in production (configure proxy in production)
+    : 'http://localhost:3000'; 
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    // You can add API call here to send the data
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+    setDebugInfo(null);
+
+    try {
+      // Test the API connection first
+      try {
+        const testResponse = await fetch(`${API_BASE_URL}/api/test`);
+        if (!testResponse.ok) {
+          setDebugInfo(`API test failed with status: ${testResponse.status}`);
+        } else {
+          const testData = await testResponse.json();
+          setDebugInfo(`API test successful: ${JSON.stringify(testData)}`);
+        }
+      } catch (testError) {
+        setDebugInfo(`API test error: ${testError instanceof Error ? testError.message : 'Unknown error'}`);
+      }
+
+      // Then attempt the actual form submission
+      const apiUrl = `${API_BASE_URL}/api/send-email`;
+      
+      console.log('Submitting to:', apiUrl);
+      console.log('Form data:', formData);
+      
+      const res = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      console.log('Response status:', res.status);
+      console.log('Response headers:', Object.fromEntries(res.headers.entries()));
+      
+      if (res.status === 404) {
+        setSubmitStatus({
+          type: "error",
+          message: "API endpoint not found. Please make sure the server is running on port 3000."
+        });
+        setDebugInfo(`API endpoint ${apiUrl} returned 404 Not Found. Make sure to run the Express server with 'node server/index.ts'`);
+        return;
+      }
+
+      // Get the response text first
+      const responseText = await res.text();
+      console.log('Raw response:', responseText);
+      
+      let responseData;
+      
+      // Try to parse as JSON if it looks like JSON
+      if (responseText.trim().startsWith('{') || responseText.trim().startsWith('[')) {
+        try {
+          responseData = JSON.parse(responseText);
+        } catch (parseError) {
+          console.error('JSON parse error:', parseError);
+          setDebugInfo(`Failed to parse JSON response: ${responseText.substring(0, 200)}...`);
+          throw new Error(`Invalid JSON response: ${parseError instanceof Error ? parseError.message : 'Parse error'}`);
+        }
+      } else {
+        // Not JSON - likely HTML error page
+        console.error('Non-JSON response received:', responseText);
+        setDebugInfo(`Server returned HTML instead of JSON. Response: ${responseText.substring(0, 500)}...`);
+        
+        if (res.status >= 500) {
+          throw new Error('Server error (500+). Please try again later.');
+        } else if (res.status >= 400) {
+          throw new Error(`Client error (${res.status}). Please check your request.`);
+        } else {
+          throw new Error('Server returned unexpected response format.');
+        }
+      }
+
+      if (res.ok) {
+        setSubmitStatus({ 
+          type: "success", 
+          message: "Your message has been sent successfully! We'll get back to you soon." 
+        });
+
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          projectType: "",
+          message: "",
+        });
+      } else {
+        setSubmitStatus({ 
+          type: "error", 
+          message: `Error: ${responseData?.error || `HTTP ${res.status} - Failed to send message`}` 
+        });
+        
+        if (responseData?.details) {
+          setDebugInfo(`Error details: ${responseData.details}`);
+        }
+      }
+    } catch (err) {
+      console.error('Form submission error:', err);
+      
+      let errorMessage = "Something went wrong with the request. Please try again later.";
+      let debugMessage = "";
+      
+      if (err instanceof TypeError && err.message.includes('fetch')) {
+        errorMessage = "Network error. Please check your internet connection and make sure the API server is running.";
+        debugMessage = `Network error: ${err.message}`;
+      } else if (err instanceof SyntaxError && err.message.includes('JSON')) {
+        errorMessage = "Server returned invalid response. Please try again.";
+        debugMessage = `JSON parsing error: ${err.message}`;
+      } else if (err instanceof Error) {
+        errorMessage = err.message;
+        debugMessage = `Error: ${err.message}`;
+      }
+      
+      setSubmitStatus({ 
+        type: "error", 
+        message: errorMessage
+      });
+      
+      if (debugMessage) {
+        setDebugInfo(debugMessage);
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -39,21 +164,9 @@ export default function ConsultationForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white mt-14">
       <div className="px-4 py-12 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <motion.button
-              onClick={() => navigate("/")}
-              className="flex items-center text-gray-600 transition-colors hover:text-primary-600"
-              whileHover={{ x: -5 }}
-            >
-              <ArrowLeft className="w-5 h-5 mr-2" />
-              Back to Home
-            </motion.button>
-            <img src={logo} alt="logo" className="w-10 aspect-[5/4]" />
-          </div>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -65,6 +178,25 @@ export default function ConsultationForm() {
             <p className="w-full mb-8 text-sm leading-tight text-center text-gray- md:text-base">
               Fill out the form below and we'll get back to you within 24 hours.
             </p>
+
+            {submitStatus.type && (
+              <div 
+                className={`p-4 mb-6 rounded-md ${
+                  submitStatus.type === "success" 
+                    ? "bg-green-50 text-green-800 border border-green-200" 
+                    : "bg-red-50 text-red-800 border border-red-200"
+                }`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
+
+            {debugInfo && (
+              <div className="p-4 mb-6 overflow-auto text-xs border border-orange-200 rounded-md bg-orange-50 text-orange-800 max-h-32">
+                <strong>Debug Info:</strong>
+                <pre>{debugInfo}</pre>
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -84,6 +216,7 @@ export default function ConsultationForm() {
                     onChange={handleChange}
                     className="form-input"
                     placeholder="John Doe"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -103,6 +236,7 @@ export default function ConsultationForm() {
                     onChange={handleChange}
                     className="form-input"
                     placeholder="john@example.com"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -121,6 +255,7 @@ export default function ConsultationForm() {
                     onChange={handleChange}
                     className="form-input"
                     placeholder="Your Company"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -139,6 +274,7 @@ export default function ConsultationForm() {
                     onChange={handleChange}
                     className="form-input"
                     placeholder="+1 (555) 000-0000"
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
@@ -157,6 +293,7 @@ export default function ConsultationForm() {
                   value={formData.projectType}
                   onChange={handleChange}
                   className="form-input"
+                  disabled={isSubmitting}
                 >
                   <option value="">Select a project type</option>
                   <option value="web-development">Web Development</option>
@@ -183,23 +320,35 @@ export default function ConsultationForm() {
                   rows={4}
                   className="h-20 resize-none form-input"
                   placeholder="Tell us about your project and requirements..."
+                  disabled={isSubmitting}
                 />
               </div>
 
               <motion.button
                 type="submit"
                 className="flex items-center justify-center w-full btn-primary"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                disabled={isSubmitting}
               >
-                <Send className="w-5 h-5 mr-2" />
-                Submit Request
+                {isSubmitting ? (
+                  <>
+                    <Loader className="w-5 h-5 mr-2 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5 mr-2" />
+                    Submit Request
+                  </>
+                )}
               </motion.button>
             </form>
           </motion.div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
+
+export default ConsultationForm;
