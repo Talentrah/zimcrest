@@ -32,33 +32,15 @@ function ConsultationForm() {
     setDebugInfo(null);
 
     try {
-      // Test the API connection first
-      try {
-        const testResponse = await fetch(`${API_BASE_URL}/api/test`);
-        if (!testResponse.ok) {
-          setDebugInfo(`API test failed with status: ${testResponse.status}`);
-        } else {
-          const testData = await testResponse.json();
-          setDebugInfo(`API test successful: ${JSON.stringify(testData)}`);
-        }
-      } catch (testError) {
-        setDebugInfo(`API test error: ${testError instanceof Error ? testError.message : 'Unknown error'}`);
-      }
 
       // Then attempt the actual form submission
       const apiUrl = `${API_BASE_URL}/api/send-email`;
-      
-      console.log('Submitting to:', apiUrl);
-      console.log('Form data:', formData);
       
       const res = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-
-      console.log('Response status:', res.status);
-      console.log('Response headers:', Object.fromEntries(res.headers.entries()));
       
       if (res.status === 404) {
         setSubmitStatus({
@@ -71,7 +53,6 @@ function ConsultationForm() {
 
       // Get the response text first
       const responseText = await res.text();
-      console.log('Raw response:', responseText);
       
       let responseData;
       
@@ -80,13 +61,11 @@ function ConsultationForm() {
         try {
           responseData = JSON.parse(responseText);
         } catch (parseError) {
-          console.error('JSON parse error:', parseError);
           setDebugInfo(`Failed to parse JSON response: ${responseText.substring(0, 200)}...`);
           throw new Error(`Invalid JSON response: ${parseError instanceof Error ? parseError.message : 'Parse error'}`);
         }
       } else {
         // Not JSON - likely HTML error page
-        console.error('Non-JSON response received:', responseText);
         setDebugInfo(`Server returned HTML instead of JSON. Response: ${responseText.substring(0, 500)}...`);
         
         if (res.status >= 500) {
