@@ -5,9 +5,10 @@ interface ContactFormProps {
   formData: FormData;
   handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+   isSubmitting?: boolean;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ formData, handleChange, handleSubmit }) => {
+const ContactForm: React.FC<ContactFormProps> = ({ formData, handleChange, handleSubmit, isSubmitting }) => {
   return (
     <div id="contact-form" className="py-16 bg-white">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -251,9 +252,23 @@ const ContactForm: React.FC<ContactFormProps> = ({ formData, handleChange, handl
             <div className="sm:col-span-2">
               <button
                 type="submit"
-                className="inline-flex items-center justify-center w-full px-6 py-3 text-base font-medium text-white border border-transparent shadow-sm cursor-pointer bg-primary-600 rounded-button hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 whitespace-nowrap"
+                 disabled={isSubmitting}
+  className={`inline-flex items-center justify-center w-full px-6 py-3 text-base font-medium text-white border border-transparent shadow-sm cursor-pointer bg-primary-600 rounded-button hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 whitespace-nowrap ${
+    isSubmitting
+      ? 'bg-gray-400 cursor-not-allowed'
+      : 'bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200'
+  } text-white`}
+                
               >
-                Submit Request
+               
+
+                {isSubmitting ? (
+    <div className="flex items-center justify-center">
+      Sending...
+    </div>
+  ) : (
+    'Submit Request'
+  )}
               </button>
             </div>
           </form>

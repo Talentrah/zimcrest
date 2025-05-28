@@ -12,6 +12,7 @@ export default function Training() {
   const [activeTab, setActiveTab] = useState<string>("webDevelopment");
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
   const [successMessage, setSuccessMessage] = useState('');
+   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -55,7 +56,7 @@ export default function Training() {
 
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
-  console.log(formData);
+  setIsSubmitting(true);
 
   try {
     const response = await fetch(apiUrl, {
@@ -71,7 +72,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     if (response.ok) {
       setSuccessMessage("🎉 Your registration has been submitted successfully! We'll be in touch shortly.");
 
-      // ✅ Clear the form
+      // Clear the form
       setFormData({
         fullName: '',
         email: '',
@@ -84,16 +85,17 @@ const handleSubmit = async (e: React.FormEvent) => {
         hearAbout: '',
       });
 
-      // ✅ Optionally scroll to top or show a success section
+      // Optionally scroll to top or show a success section
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
     } else {
       alert(`Error: ${result.error || "Something went wrong."}`);
     }
   } catch (error) {
-    console.error("Error submitting registration:", error);
     alert("Failed to submit registration. Please try again.");
-  }
+  }  finally {
+      setIsSubmitting(false);
+    }
 };
 
 
@@ -1856,13 +1858,29 @@ useEffect(() => {
                 </div>
                 <div className="sm:col-span-2">
                   <button
-                    type="submit"
-                    className="w-full inline-flex items-center justify-center px-8 py-4 border border-transparent !rounded-button shadow-lg text-lg font-medium text-white bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 whitespace-nowrap cursor-pointer transform hover:scale-105 transition-all duration-300"
-                  >
+                type="submit"
+                 disabled={isSubmitting}
+  className={`w-full inline-flex items-center justify-center px-8 py-4 border border-transparent !rounded-button shadow-lg text-lg font-medium text-white bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 whitespace-nowrap cursor-pointer transform hover:scale-105 transition-all duration-300 ${
+    isSubmitting
+      ? 'bg-gray-400 cursor-not-allowed'
+      : 'bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200'
+  } text-white`}
+                
+              >
+               
                     <i className="mr-2 fas fa-lock"></i>
-                    Secure Your Spot Now
-                    <i className="ml-2 fas fa-arrow-right"></i>
-                  </button>
+
+
+                {isSubmitting ? (
+    <div className="flex items-center justify-center">
+      Sending...
+    </div>
+  ) : (
+    'Secure Your Spot'
+  )}
+   <i className="ml-2 fas fa-arrow-right"></i>
+
+              </button>
                   <div className="mt-8 sm:col-span-2">
                     <div className="p-4 rounded-lg bg-indigo-50">
                       <div className="flex items-center">

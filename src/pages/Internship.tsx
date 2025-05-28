@@ -11,6 +11,7 @@ import Seo from "../components/SEO";
 export default function Internship() {
   const [activeTab, setActiveTab] = useState<string>("overview");
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
+   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<{
     fullName: string;
     email: string;
@@ -93,9 +94,7 @@ export default function Internship() {
 
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
-
-  console.log("Nigerian Candidate:", formData.phone.startsWith("+234"));
-  console.log(formData);
+setIsSubmitting(true);
 
   const form = new FormData();
   form.append("fullName", formData.fullName);
@@ -119,10 +118,25 @@ const handleSubmit = async (e: React.FormEvent) => {
 
     const result = await response.json();
     alert(result.message || "Application submitted!");
+     // Reset form
+      setFormData({
+    fullName: "",
+    email: "",
+    phone: "",
+    education: "",
+    graduationDate: "",
+    internshipArea: "",
+    startDate: "",
+    resume: null,
+    coverLetter: "",
+    hearAbout: "",
+      });
+      
   } catch (error) {
-    console.error("Submission error:", error);
     alert("Something went wrong. Please try again.");
-  }
+  } finally{
+    setIsSubmitting(false);
+}
 };
 
 
@@ -1645,16 +1659,31 @@ const handleSubmit = async (e: React.FormEvent) => {
                 </div>
                 <div className="sm:col-span-2">
                   <button
-                    type="submit"
-                    className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent !rounded-button shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 whitespace-nowrap cursor-pointer"
-                  >
-                    Submit Application
-                  </button>
+                type="submit"
+                 disabled={isSubmitting}
+  className={`w-full inline-flex items-center justify-center px-6 py-3 border border-transparent !rounded-button shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 whitespace-nowrap cursor-pointer${
+    isSubmitting
+      ? 'bg-gray-400 cursor-not-allowed'
+      : 'bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200'
+  } text-white`}
+                
+              >
+               
+
+                {isSubmitting ? (
+    <div className="flex items-center justify-center">
+      Sending...
+    </div>
+  ) : (
+    'Submit Application'
+  )}
+              </button>
                 </div>
               </form>
             </div>
           </div>
         </div>
+        
         {/* FAQ Section */}
         <div className="py-16 bg-white">
           <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
