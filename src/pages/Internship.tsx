@@ -7,11 +7,13 @@ import facebookImg from "../assets/icons8-facebook-48.png";
 import amazonImg from "../assets/icons8-amazon-48.png";
 import spotify from "../assets/icons8-spotify-48.png";
 import Seo from "../components/SEO";
+import { X } from "lucide-react";
 
 export default function Internship() {
   const [activeTab, setActiveTab] = useState<string>("overview");
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
-   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [success, setSuccess] = useState<string>("");
   const [formData, setFormData] = useState<{
     fullName: string;
     email: string;
@@ -50,34 +52,34 @@ export default function Internship() {
     }));
   };
 
- const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-  const file = e.target.files?.[0] || null;
-  
-  // Validate file size (5MB limit)
-  if (file && file.size > 5 * 1024 * 1024) {
-    alert("File size must be less than 5MB");
-    e.target.value = ""; // Clear the input
-    return;
-  }
-  
-  // Validate file type
-  const allowedTypes = [
-    'application/pdf',
-    'application/msword',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-  ];
-  
-  if (file && !allowedTypes.includes(file.type)) {
-    alert("Please upload a PDF or Word document");
-    e.target.value = ""; // Clear the input
-    return;
-  }
-  
-  setFormData(prevState => ({
-    ...prevState,
-    resume: file
-  }));
-};
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const file = e.target.files?.[0] || null;
+
+    // Validate file size (5MB limit)
+    if (file && file.size > 5 * 1024 * 1024) {
+      alert("File size must be less than 5MB");
+      e.target.value = ""; // Clear the input
+      return;
+    }
+
+    // Validate file type
+    const allowedTypes = [
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ];
+
+    if (file && !allowedTypes.includes(file.type)) {
+      alert("Please upload a PDF or Word document");
+      e.target.value = ""; // Clear the input
+      return;
+    }
+
+    setFormData((prevState) => ({
+      ...prevState,
+      resume: file,
+    }));
+  };
   const [showPaymentModal, setShowPaymentModal] = useState<boolean>(false);
   const [isNigerianCandidate, setIsNigerianCandidate] = useState<boolean>(true);
   console.log("Nigerian Candidate:", isNigerianCandidate);
@@ -85,64 +87,63 @@ export default function Internship() {
     setShowPaymentModal(true);
   };
 
-   // API base URL for Express server
-  const API_BASE_URL = process.env.NODE_ENV === 'development'
-  ? 'http://localhost:3000' 
-  : ''; 
+  // API base URL for Express server
+  const API_BASE_URL =
+    process.env.NODE_ENV === "development" ? "http://localhost:3000" : "";
 
-       const apiUrl = `${API_BASE_URL}/api/internship-apply`;
+  const apiUrl = `${API_BASE_URL}/api/internship-apply`;
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-setIsSubmitting(true);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  const form = new FormData();
-  form.append("fullName", formData.fullName);
-  form.append("email", formData.email);
-  form.append("phone", formData.phone);
-  form.append("education", formData.education);
-  form.append("graduationDate", formData.graduationDate);
-  form.append("internshipArea", formData.internshipArea);
-  form.append("startDate", formData.startDate);
-  form.append("coverLetter", formData.coverLetter);
-  form.append("hearAbout", formData.hearAbout);
-  if (formData.resume) {
-    form.append("resume", formData.resume);
-  }
+    const form = new FormData();
+    form.append("fullName", formData.fullName);
+    form.append("email", formData.email);
+    form.append("phone", formData.phone);
+    form.append("education", formData.education);
+    form.append("graduationDate", formData.graduationDate);
+    form.append("internshipArea", formData.internshipArea);
+    form.append("startDate", formData.startDate);
+    form.append("coverLetter", formData.coverLetter);
+    form.append("hearAbout", formData.hearAbout);
+    if (formData.resume) {
+      form.append("resume", formData.resume);
+    }
 
-  try {
-    const response = await fetch(apiUrl, {
-      method: "POST",
-      body: form, 
-    });
-
-    const result = await response.json();
-    alert(result.message || "Application submitted!");
-     // Reset form
-      setFormData({
-    fullName: "",
-    email: "",
-    phone: "",
-    education: "",
-    graduationDate: "",
-    internshipArea: "",
-    startDate: "",
-    resume: null,
-    coverLetter: "",
-    hearAbout: "",
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        body: form,
       });
-      
-  } catch (error) {
-    alert("Something went wrong. Please try again.");
-  } finally{
-    setIsSubmitting(false);
-}
-};
 
+      const result = await response.json();
+      alert(result.message || "Application submitted!");
+      // Reset form
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        education: "",
+        graduationDate: "",
+        internshipArea: "",
+        startDate: "",
+        resume: null,
+        coverLetter: "",
+        hearAbout: "",
+      });
+      setSuccess(result?.message || "Application submitted successfully!");
+    } catch (error) {
+      alert("Something went wrong. Please try again.");
+      console.error("Error submitting application", error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const handlePaymentSelection = (isNigerian: boolean) => {
     setIsNigerianCandidate(isNigerian);
-    const amount = isNigerian ? "N20,000" : "$15";
+    const amount = isNigerian ? "N35,000" : "$20";
     window.location.href = `https://payment-provider.com/pay?amount=${amount}`; // Replace with actual payment URL
   };
   const PaymentModal = () => {
@@ -162,13 +163,13 @@ setIsSubmitting(true);
                 onClick={() => handlePaymentSelection(true)}
                 className="w-full py-3 px-4 border border-transparent !rounded-button text-white bg-indigo-600 hover:bg-indigo-700 whitespace-nowrap cursor-pointer"
               >
-                Pay ₦20,000 (Nigerian Candidates)
+                Pay ₦35,000 (Nigerian Candidates)
               </button>
               <button
                 onClick={() => handlePaymentSelection(false)}
                 className="w-full py-3 px-4 border border-transparent !rounded-button text-white bg-indigo-600 hover:bg-indigo-700 whitespace-nowrap cursor-pointer"
               >
-                Pay $15 (International Candidates)
+                Pay $20 (International Candidates)
               </button>
             </div>
             <button
@@ -1030,10 +1031,10 @@ setIsSubmitting(true);
                     </div>
                     <div className="flex items-baseline mt-4">
                       <span className="text-2xl font-extrabold text-gray-900 md:text-5xl">
-                        ₦20,000
+                        ₦35,000
                       </span>
                       <span className="ml-1 text-base font-semibold text-gray-500 md:text-xl">
-                        /program
+                        /5 Months
                       </span>
                     </div>
                     <p className="mt-5 text-lg text-gray-500">
@@ -1086,10 +1087,10 @@ setIsSubmitting(true);
                     </div>
                     <div className="flex items-baseline mt-4">
                       <span className="text-2xl font-extrabold text-gray-900 md:text-5xl">
-                        $15
+                        $20
                       </span>
                       <span className="ml-1 text-base font-semibold text-gray-500 md:text-xl">
-                        /program
+                        /5 Months
                       </span>
                     </div>
                     <p className="mt-5 text-lg text-gray-500">
@@ -1416,6 +1417,17 @@ setIsSubmitting(true);
             </div>
           </div>
         )}
+        {success && (
+          <section className="fixed top-0 left-0 z-50 flex items-center justify-center w-full min-h-screen bg-white/30 backdrop-blur-sm">
+            <div className="p-4 mb-6 text-center text-green-800 transition-opacity duration-300 bg-green-100 border border-green-300 rounded-md sm:col-span-2 md:w-full w-[80%] max-w-[700px] h-[300px] flex justify-center items-center relative">
+              <p>{success}</p>
+              <X
+                className="absolute text-black cursor-pointer size-6 top-4 right-4"
+                onClick={() => setSuccess("")}
+              />
+            </div>
+          </section>
+        )}
         {/* Application Form */}
         <div id="application-form" className="py-16 bg-gray-50">
           <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -1659,31 +1671,28 @@ setIsSubmitting(true);
                 </div>
                 <div className="sm:col-span-2">
                   <button
-                type="submit"
-                 disabled={isSubmitting}
-  className={`w-full inline-flex items-center justify-center px-6 py-3 border border-transparent !rounded-button shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 whitespace-nowrap cursor-pointer${
-    isSubmitting
-      ? 'bg-gray-400 cursor-not-allowed'
-      : 'bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200'
-  } text-white`}
-                
-              >
-               
-
-                {isSubmitting ? (
-    <div className="flex items-center justify-center">
-      Sending...
-    </div>
-  ) : (
-    'Submit Application'
-  )}
-              </button>
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`w-full inline-flex items-center justify-center px-6 py-3 border border-transparent !rounded-button shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 whitespace-nowrap cursor-pointer${
+                      isSubmitting
+                        ? "bg-gray-400 cursor-not-allowed"
+                        : "bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200"
+                    } text-white`}
+                  >
+                    {isSubmitting ? (
+                      <div className="flex items-center justify-center">
+                        Sending...
+                      </div>
+                    ) : (
+                      "Submit Application"
+                    )}
+                  </button>
                 </div>
               </form>
             </div>
           </div>
         </div>
-        
+
         {/* FAQ Section */}
         <div className="py-16 bg-white">
           <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">

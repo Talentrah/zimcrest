@@ -8,9 +8,10 @@ import ContactForm from "../components/HireTalent/ContactForm";
 import Testimonials from "../components/HireTalent/Testimonials";
 import FAQ from "../components/HireTalent/FAQ";
 import { FormData } from "../types/hire.types";
+import { X } from "lucide-react";
 
 const HireTalent: React.FC = () => {
-  const [successMessage, setSuccessMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     companyName: "",
@@ -26,9 +27,8 @@ const HireTalent: React.FC = () => {
   });
 
   // API base URL for Express server
-  const API_BASE_URL = process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3000'
-    : '';
+  const API_BASE_URL =
+    process.env.NODE_ENV === "development" ? "http://localhost:3000" : "";
   const apiUrl = `${API_BASE_URL}/api/hire-talent`;
 
   const handleChange = (
@@ -46,7 +46,7 @@ const HireTalent: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -58,16 +58,18 @@ const HireTalent: React.FC = () => {
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        console.error('Server error:', errorData);
+        console.error("Server error:", errorData);
         alert("Something went wrong. Please try again.");
         return;
       }
 
       const result = await response.json();
-      console.log('Success:', result);
-      
+      console.log("Success:", result);
+
       // Set success message
-      setSuccessMessage("🎉 Thank you for your inquiry! Our team will contact you shortly.");
+      setSuccessMessage(
+        "🎉 Thank you for your inquiry! Our team will contact you shortly."
+      );
 
       // Reset form
       setFormData({
@@ -82,12 +84,8 @@ const HireTalent: React.FC = () => {
         timeline: "",
         budgetRange: "",
       });
-
-      // Scroll to top to show success message
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-
     } catch (error) {
-      console.error('Network error:', error);
+      console.error("Network error:", error);
       alert("A network error occurred. Please try again later.");
     } finally {
       setIsSubmitting(false);
@@ -97,7 +95,7 @@ const HireTalent: React.FC = () => {
   useEffect(() => {
     if (successMessage) {
       const timeout = setTimeout(() => {
-        setSuccessMessage('');
+        setSuccessMessage("");
       }, 8000); // Increased to 8 seconds for better UX
       return () => clearTimeout(timeout);
     }
@@ -111,31 +109,30 @@ const HireTalent: React.FC = () => {
       />
       <div className="min-h-screen bg-gray-50">
         <HeroSection />
-        
+
         {/* Success Message - Fixed positioning at top */}
         {successMessage && (
-          <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 max-w-md w-full mx-4">
-            <div className="bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg border-l-4 border-green-600 animate-pulse">
-              <div className="flex items-center">
-                <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <span className="font-medium">{successMessage}</span>
-              </div>
+          <section className="fixed top-0 left-0 z-50 flex items-center justify-center w-full min-h-screen bg-white/30 backdrop-blur-sm">
+            <div className="p-4 mb-6 text-center text-green-800 transition-opacity duration-300 bg-green-100 border border-green-300 rounded-md sm:col-span-2 md:w-full w-[80%] max-w-[700px] h-[300px] flex justify-center items-center relative">
+              <p>{successMessage}</p>
+              <X
+                className="absolute text-black cursor-pointer size-6 top-4 right-4"
+                onClick={() => setSuccessMessage("")}
+              />
             </div>
-          </div>
+          </section>
         )}
 
         <ValueProposition hireServices={hireServices} />
         <TalentCategories categories={categories} />
-        
+
         <ContactForm
           formData={formData}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           isSubmitting={isSubmitting}
         />
-        
+
         <Testimonials />
         <FAQ faqs={faqs} />
       </div>

@@ -101,7 +101,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li className="flex items-center">
                 <i className="mr-2 text-indigo-400 fas fa-phone"></i>
-                <span className="text-gray-300">+234 (0)905 998 8298</span>
+                <span className="text-gray-300">+234 (0)8139239019</span>
               </li>
               <li className="flex items-center">
                 <i className="mr-2 text-indigo-400 fas fa-envelope"></i>
@@ -115,26 +115,26 @@ const Footer: React.FC = () => {
             </ul>
           </div>
         </div>
-        <div className="flex flex-col flex-wrap items-center justify-between w-full pt-8 mt-12 border-t border-white md:flex-row">
-          <p className="text-base text-gray-400">
-            © {new Date().getFullYear()} ZimcrestTech. All rights reserved.
+        <div className="flex flex-col items-center justify-between w-full gap-8 pt-8 mt-12 border-t border-white md:flex-row md:gap-0">
+          <p className="text-base text-center text-white">
+            Zimcrest Technologies. All rights reserved.
           </p>
-          <div className="flex flex-col flex-wrap items-center justify-center w-full mt-4 space-y-6 sm:space-y-0 sm:space-x-6 sm:flex-row md:mt-0">
+          <div className="flex flex-wrap items-center justify-center gap-5 md:justify-start">
             <Link
               to="/privacy-policy"
-              className="text-gray-400 cursor-pointer hover:text-white whitespace-nowrap"
+              className="text-whitecursor-pointer whitespace-nowrap"
             >
               Privacy Policy
             </Link>
             <Link
               to="terms-of-service"
-              className="text-gray-400 cursor-pointer hover:text-white whitespace-nowrap"
+              className="text-whitecursor-pointer whitespace-nowrap"
             >
               Terms of Service
             </Link>
             <Link
               to="/sitemap"
-              className="text-gray-400 cursor-pointer hover:text-white whitespace-nowrap"
+              className="text-whitecursor-pointer whitespace-nowrap"
             >
               Sitemap
             </Link>

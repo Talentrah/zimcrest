@@ -7,6 +7,7 @@ type faqType = {
   answer: string;
 };
 type hireService = {
+  icon: string;
   title: string;
   description: string;
   features: string[];
@@ -54,6 +55,7 @@ export const faqs: faqType[] = [
 
 export const hireServices: hireService[] = [
   {
+    icon: "fa-solid fa-briefcase",
     title: "Staff Augmentation",
     description:
       "Extend your team with our skilled professionals who integrate seamlessly with your existing workforce.",
@@ -65,6 +67,7 @@ export const hireServices: hireService[] = [
     ],
   },
   {
+    icon: "fa-solid fa-people-group",
     title: "Dedicated Teams",
     description:
       "Get a complete, self-managed team that works exclusively on your project with full commitment.",
@@ -76,6 +79,7 @@ export const hireServices: hireService[] = [
     ],
   },
   {
+    icon: "fa-solid fa-diagram-project",
     title: "Project Outsourcing",
     description:
       "Outsource your entire project to our experienced team for efficient delivery and management.",

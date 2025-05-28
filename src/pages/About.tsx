@@ -81,21 +81,8 @@ export default function About() {
                     Founded in 2020, Zimcrest Technologies began with a simple
                     mission: to bridge the gap between African tech talent and
                     global opportunities. What started as a small training
-                    initiative in Harare has grown into a comprehensive tech
-                    ecosystem serving multiple countries across Africa.
-                  </p>
-                  <p>
-                    Our journey has been defined by a commitment to excellence,
-                    innovation, and community impact. We've evolved from a
-                    training center to a full-service tech talent company,
-                    providing recruitment, training, and consulting services to
-                    clients worldwide.
-                  </p>
-                  <p>
-                    Today, Zimcrest Technologies stands as a leader in tech
-                    talent development in Africa, with a proven track record of
-                    launching thousands of successful careers and supporting
-                    businesses with exceptional tech professionals.
+                    initiative has grown into a comprehensive tech ecosystem
+                    serving multiple countries across Africa.
                   </p>
                 </div>
                 <div className="mt-8">

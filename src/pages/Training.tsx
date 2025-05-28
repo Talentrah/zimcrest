@@ -7,12 +7,17 @@ import facebookImg from "../assets/icons8-facebook-48.png";
 import amazonImg from "../assets/icons8-amazon-48.png";
 import spotify from "../assets/icons8-spotify-48.png";
 import Seo from "../components/SEO";
+import { X } from "lucide-react";
 
 export default function Training() {
   const [activeTab, setActiveTab] = useState<string>("webDevelopment");
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
-  const [successMessage, setSuccessMessage] = useState('');
-   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [price, setPrice] = useState({
+    naira: "",
+    usd: "",
+  });
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -47,67 +52,63 @@ export default function Training() {
     }));
   };
 
-   // API base URL for Express server
-  const API_BASE_URL = process.env.NODE_ENV === 'development'
-  ? 'http://localhost:3000' 
-  : ''; 
+  // API base URL for Express server
+  const API_BASE_URL =
+    process.env.NODE_ENV === "development" ? "http://localhost:3000" : "";
 
   const apiUrl = `${API_BASE_URL}/api/register`;
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  try {
-    const response = await fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-
-    const result = await response.json();
-
-    if (response.ok) {
-      setSuccessMessage("🎉 Your registration has been submitted successfully! We'll be in touch shortly.");
-
-      // Clear the form
-      setFormData({
-        fullName: '',
-        email: '',
-        phone: '',
-        nationality: '',
-        course: '',
-        startDate: '',
-        experience: '',
-        goals: '',
-        hearAbout: '',
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
 
-      // Optionally scroll to top or show a success section
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const result = await response.json();
 
-    } else {
-      alert(`Error: ${result.error || "Something went wrong."}`);
-    }
-  } catch (error) {
-    alert("Failed to submit registration. Please try again.");
-  }  finally {
+      if (response.ok) {
+        setSuccessMessage(
+          "🎉 Your registration has been submitted successfully! We'll be in touch shortly."
+        );
+
+        // Clear the form
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          nationality: "",
+          course: "",
+          startDate: "",
+          experience: "",
+          goals: "",
+          hearAbout: "",
+        });
+      } else {
+        alert(`Error: ${result.error || "Something went wrong."}`);
+      }
+    } catch (error) {
+      alert("Failed to submit registration. Please try again.");
+      console.error("Error submitting registration:", error);
+    } finally {
       setIsSubmitting(false);
     }
-};
+  };
 
-
-useEffect(() => {
-  if (successMessage) {
-    const timeout = setTimeout(() => {
-      setSuccessMessage('');
-    }, 5000); 
-    return () => clearTimeout(timeout);
-  }
-}, [successMessage]);
-
+  useEffect(() => {
+    if (successMessage) {
+      const timeout = setTimeout(() => {
+        setSuccessMessage("");
+      }, 5000);
+      return () => clearTimeout(timeout);
+    }
+  }, [successMessage]);
 
   return (
     <>
@@ -584,7 +585,7 @@ useEffect(() => {
                                   Duration
                                 </h5>
                                 <p className="text-sm text-gray-500">
-                                  16 weeks (Full-time) / 24 weeks (Part-time)
+                                  12 weeks
                                 </p>
                               </div>
                             </div>
@@ -623,7 +624,7 @@ useEffect(() => {
                                   Tuition
                                 </h5>
                                 <p className="text-sm text-gray-500">
-                                  $1,500 (Payment plans available)
+                                  ₦200,000 / $135
                                 </p>
                               </div>
                             </div>
@@ -699,6 +700,12 @@ useEffect(() => {
                             <a
                               href="#registration-form"
                               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium !rounded-button text-white bg-primary-600 hover:bg-indigo-700 whitespace-nowrap cursor-pointer"
+                              onClick={() =>
+                                setPrice({
+                                  naira: "₦200,000",
+                                  usd: "$135",
+                                })
+                              }
                             >
                               Register Now
                             </a>
@@ -749,7 +756,7 @@ useEffect(() => {
                                   Duration
                                 </h5>
                                 <p className="text-sm text-gray-500">
-                                  20 weeks (Full-time) / 30 weeks (Part-time)
+                                  12 weeks
                                 </p>
                               </div>
                             </div>
@@ -788,7 +795,7 @@ useEffect(() => {
                                   Tuition
                                 </h5>
                                 <p className="text-sm text-gray-500">
-                                  $2,200 (Payment plans available)
+                                  ₦150,000 / $100
                                 </p>
                               </div>
                             </div>
@@ -864,6 +871,12 @@ useEffect(() => {
                             <a
                               href="#registration-form"
                               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium !rounded-button text-white bg-primary-600 hover:bg-indigo-700 whitespace-nowrap cursor-pointer"
+                              onClick={() =>
+                                setPrice({
+                                  naira: "₦150,000",
+                                  usd: "$100",
+                                })
+                              }
                             >
                               Register Now
                             </a>
@@ -914,7 +927,7 @@ useEffect(() => {
                                   Duration
                                 </h5>
                                 <p className="text-sm text-gray-500">
-                                  18 weeks (Full-time) / 24 weeks (Part-time)
+                                  12 weeks
                                 </p>
                               </div>
                             </div>
@@ -933,15 +946,27 @@ useEffect(() => {
                             </div>
                             <div className="flex items-center">
                               <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-indigo-100 rounded-full">
-                                <i className="text-primary-600 fas fa-certificate"></i>
+                                <i className="text-primary-600 fas fa-users"></i>
                               </div>
                               <div className="ml-4">
                                 <h5 className="text-sm font-medium text-gray-900">
-                                  Certification
+                                  Class Size
                                 </h5>
                                 <p className="text-sm text-gray-500">
-                                  Industry-recognized cybersecurity
-                                  certification
+                                  Maximum 15 students
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-center">
+                              <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-indigo-100 rounded-full">
+                                <i className="text-primary-600 fas fa-dollar-sign"></i>
+                              </div>
+                              <div className="ml-4">
+                                <h5 className="text-sm font-medium text-gray-900">
+                                  Tuition
+                                </h5>
+                                <p className="text-sm text-gray-500">
+                                  ₦400,000 / $265
                                 </p>
                               </div>
                             </div>
@@ -993,6 +1018,12 @@ useEffect(() => {
                             <a
                               href="#registration-form"
                               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium !rounded-button text-white bg-primary-600 hover:bg-indigo-700 whitespace-nowrap cursor-pointer"
+                              onClick={() =>
+                                setPrice({
+                                  naira: "₦400,000",
+                                  usd: "$265",
+                                })
+                              }
                             >
                               Register Now
                             </a>
@@ -1042,7 +1073,7 @@ useEffect(() => {
                                   Duration
                                 </h5>
                                 <p className="text-sm text-gray-500">
-                                  14 weeks (Full-time) / 20 weeks (Part-time)
+                                  12 weeks
                                 </p>
                               </div>
                             </div>
@@ -1069,6 +1100,32 @@ useEffect(() => {
                                 </h5>
                                 <p className="text-sm text-gray-500">
                                   Figma, Adobe XD, Sketch
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-center">
+                              <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-indigo-100 rounded-full">
+                                <i className="text-primary-600 fas fa-users"></i>
+                              </div>
+                              <div className="ml-4">
+                                <h5 className="text-sm font-medium text-gray-900">
+                                  Class Size
+                                </h5>
+                                <p className="text-sm text-gray-500">
+                                  Maximum 15 students
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-center">
+                              <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-indigo-100 rounded-full">
+                                <i className="text-primary-600 fas fa-dollar-sign"></i>
+                              </div>
+                              <div className="ml-4">
+                                <h5 className="text-sm font-medium text-gray-900">
+                                  Tuition
+                                </h5>
+                                <p className="text-sm text-gray-500">
+                                  ₦150,000 / $100
                                 </p>
                               </div>
                             </div>
@@ -1120,6 +1177,12 @@ useEffect(() => {
                             <a
                               href="#registration-form"
                               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium !rounded-button text-white bg-primary-600 hover:bg-indigo-700 whitespace-nowrap cursor-pointer"
+                              onClick={() =>
+                                setPrice({
+                                  naira: "₦150,000",
+                                  usd: "$100",
+                                })
+                              }
                             >
                               Register Now
                             </a>
@@ -1169,7 +1232,7 @@ useEffect(() => {
                                   Duration
                                 </h5>
                                 <p className="text-sm text-gray-500">
-                                  16 weeks (Full-time) / 24 weeks (Part-time)
+                                  12 weeks
                                 </p>
                               </div>
                             </div>
@@ -1196,6 +1259,32 @@ useEffect(() => {
                                 </h5>
                                 <p className="text-sm text-gray-500">
                                   AWS, Azure, and GCP preparation
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-center">
+                              <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-indigo-100 rounded-full">
+                                <i className="text-primary-600 fas fa-users"></i>
+                              </div>
+                              <div className="ml-4">
+                                <h5 className="text-sm font-medium text-gray-900">
+                                  Class Size
+                                </h5>
+                                <p className="text-sm text-gray-500">
+                                  Maximum 15 students
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-center">
+                              <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-indigo-100 rounded-full">
+                                <i className="text-primary-600 fas fa-dollar-sign"></i>
+                              </div>
+                              <div className="ml-4">
+                                <h5 className="text-sm font-medium text-gray-900">
+                                  Tuition
+                                </h5>
+                                <p className="text-sm text-gray-500">
+                                  ₦150,000 / $100
                                 </p>
                               </div>
                             </div>
@@ -1247,6 +1336,12 @@ useEffect(() => {
                             <a
                               href="#registration-form"
                               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium !rounded-button text-white bg-primary-600 hover:bg-indigo-700 whitespace-nowrap cursor-pointer"
+                              onClick={() =>
+                                setPrice({
+                                  naira: "₦150,000",
+                                  usd: "$100",
+                                })
+                              }
                             >
                               Register Now
                             </a>
@@ -1296,7 +1391,7 @@ useEffect(() => {
                                   Duration
                                 </h5>
                                 <p className="text-sm text-gray-500">
-                                  12 weeks (Full-time) / 16 weeks (Part-time)
+                                  12 weeks
                                 </p>
                               </div>
                             </div>
@@ -1323,6 +1418,32 @@ useEffect(() => {
                                 </h5>
                                 <p className="text-sm text-gray-500">
                                   Google Analytics, SEMrush, Hootsuite
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-center">
+                              <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-indigo-100 rounded-full">
+                                <i className="text-primary-600 fas fa-users"></i>
+                              </div>
+                              <div className="ml-4">
+                                <h5 className="text-sm font-medium text-gray-900">
+                                  Class Size
+                                </h5>
+                                <p className="text-sm text-gray-500">
+                                  Maximum 15 students
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-center">
+                              <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-indigo-100 rounded-full">
+                                <i className="text-primary-600 fas fa-dollar-sign"></i>
+                              </div>
+                              <div className="ml-4">
+                                <h5 className="text-sm font-medium text-gray-900">
+                                  Tuition
+                                </h5>
+                                <p className="text-sm text-gray-500">
+                                  ₦150,000 / $100
                                 </p>
                               </div>
                             </div>
@@ -1374,6 +1495,12 @@ useEffect(() => {
                             <a
                               href="#registration-form"
                               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium !rounded-button text-white bg-primary-600 hover:bg-indigo-700 whitespace-nowrap cursor-pointer"
+                              onClick={() =>
+                                setPrice({
+                                  naira: "₦150,000",
+                                  usd: "$100",
+                                })
+                              }
                             >
                               Register Now
                             </a>
@@ -1477,8 +1604,8 @@ useEffect(() => {
         </div>
         {/* Registration Form */}
         <div
-          id="registration-form"
           className="py-24 bg-gradient-to-b from-indigo-50 to-white"
+          id="registration-form"
         >
           <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -1516,7 +1643,7 @@ useEffect(() => {
                     </div>
                     <div className="flex items-baseline mt-4">
                       <span className="text-4xl font-extrabold text-primary-600">
-                        ₦250,000
+                        {price.naira || "₦250,000"}
                       </span>
                       <span className="ml-2 text-gray-500">/course</span>
                     </div>
@@ -1578,7 +1705,7 @@ useEffect(() => {
                     </div>
                     <div className="flex items-baseline mt-4">
                       <span className="text-4xl font-extrabold text-primary-600">
-                        $150
+                        {price.usd || "$150"}
                       </span>
                       <span className="ml-2 text-gray-500">/course</span>
                     </div>
@@ -1625,8 +1752,8 @@ useEffect(() => {
                   </div>
                 </div>
               </div>
-                {/* Registration form */}
-            
+              {/* Registration form */}
+
               <div className="mt-12 text-center">
                 <div className="inline-flex items-center justify-center px-4 py-2 mb-8 space-x-2 text-sm text-gray-600 bg-gray-100 rounded-full">
                   <i className="text-primary-600 fas fa-shield-alt"></i>
@@ -1634,10 +1761,16 @@ useEffect(() => {
                 </div>
               </div>
               {successMessage && (
-  <div className="mb-6 sm:col-span-2 p-4 bg-green-100 border border-green-300 text-green-800 rounded-md text-center transition-opacity duration-300">
-    {successMessage}
-  </div>
-)}
+                <section className="fixed top-0 left-0 z-50 flex items-center justify-center w-full min-h-screen bg-white/30 backdrop-blur-sm">
+                  <div className="p-4 mb-6 text-center text-green-800 transition-opacity duration-300 bg-green-100 border border-green-300 rounded-md sm:col-span-2 md:w-full w-[80%] max-w-[700px] h-[300px] flex justify-center items-center relative">
+                    <p>{successMessage}</p>
+                    <X
+                      className="absolute text-black cursor-pointer size-6 top-4 right-4"
+                      onClick={() => setSuccessMessage("")}
+                    />
+                  </div>
+                </section>
+              )}
               <form
                 onSubmit={handleSubmit}
                 className="grid grid-cols-1 p-8 mt-16 bg-white border border-gray-100 shadow-xl gap-y-6 sm:grid-cols-2 sm:gap-x-8 rounded-xl"
@@ -1858,29 +1991,25 @@ useEffect(() => {
                 </div>
                 <div className="sm:col-span-2">
                   <button
-                type="submit"
-                 disabled={isSubmitting}
-  className={`w-full inline-flex items-center justify-center px-8 py-4 border border-transparent !rounded-button shadow-lg text-lg font-medium text-white bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 whitespace-nowrap cursor-pointer transform hover:scale-105 transition-all duration-300 ${
-    isSubmitting
-      ? 'bg-gray-400 cursor-not-allowed'
-      : 'bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200'
-  } text-white`}
-                
-              >
-               
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`w-full inline-flex items-center justify-center px-8 py-4 border border-transparent !rounded-button shadow-lg text-lg font-medium text-white bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 whitespace-nowrap cursor-pointer transform hover:scale-105 transition-all duration-300 ${
+                      isSubmitting
+                        ? "bg-gray-400 cursor-not-allowed"
+                        : "bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200"
+                    } text-white`}
+                  >
                     <i className="mr-2 fas fa-lock"></i>
 
-
-                {isSubmitting ? (
-    <div className="flex items-center justify-center">
-      Sending...
-    </div>
-  ) : (
-    'Secure Your Spot'
-  )}
-   <i className="ml-2 fas fa-arrow-right"></i>
-
-              </button>
+                    {isSubmitting ? (
+                      <div className="flex items-center justify-center">
+                        Sending...
+                      </div>
+                    ) : (
+                      "Secure Your Spot"
+                    )}
+                    <i className="ml-2 fas fa-arrow-right"></i>
+                  </button>
                   <div className="mt-8 sm:col-span-2">
                     <div className="p-4 rounded-lg bg-indigo-50">
                       <div className="flex items-center">

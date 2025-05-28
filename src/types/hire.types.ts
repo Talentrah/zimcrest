@@ -1,5 +1,5 @@
-
 export interface HireService {
+  icon: string;
   title: string;
   description: string;
   features: string[];

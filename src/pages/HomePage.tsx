@@ -39,7 +39,7 @@ export default function HomePage() {
 
   const openWhatsApp = () => {
     window.open(
-      "https://wa.me/2349059988298?text=Hi, I'm interested in your services.",
+      "https://wa.me/2348139239019?text=Hi, I'm interested in your services.",
       "_blank"
     );
   };

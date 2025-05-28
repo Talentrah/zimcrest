@@ -1,27 +1,32 @@
-import React from 'react';
-import { HireService } from '../../types/hire.types';
+import React from "react";
+import { HireService } from "../../types/hire.types";
 
 interface ValuePropositionProps {
   hireServices: HireService[];
 }
 
-const ValueProposition: React.FC<ValuePropositionProps> = ({ hireServices }) => {
+const ValueProposition: React.FC<ValuePropositionProps> = ({
+  hireServices,
+}) => {
   const mainFeatures = [
     {
       icon: "fas fa-check-circle",
       title: "Vetted Professionals",
-      description: "All our talents undergo rigorous technical assessments and interviews to ensure top quality."
+      description:
+        "All our talents undergo rigorous technical assessments and interviews to ensure top quality.",
     },
     {
       icon: "fas fa-bolt",
       title: "Quick Matching",
-      description: "Get matched with the right talent within days, not weeks or months."
+      description:
+        "Get matched with the right talent within days, not weeks or months.",
     },
     {
       icon: "fas fa-handshake",
       title: "Ongoing Support",
-      description: "We provide continuous support throughout the engagement to ensure success."
-    }
+      description:
+        "We provide continuous support throughout the engagement to ensure success.",
+    },
   ];
 
   return (
@@ -38,8 +43,11 @@ const ValueProposition: React.FC<ValuePropositionProps> = ({ hireServices }) => 
         </div>
         <div className="mt-16">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {mainFeatures.map((feature, index) => (
-              <div key={index} className="p-8 text-center rounded-lg bg-indigo-50">
+            {mainFeatures.map((feature) => (
+              <div
+                key={feature.title}
+                className="p-8 text-center rounded-lg bg-indigo-50"
+              >
                 <div className="flex items-center justify-center w-8 h-8 mx-auto text-white rounded-md md:w-12 md:h-12 bg-primary-600">
                   <i className={`text-base md:text-xl ${feature.icon}`}></i>
                 </div>
@@ -51,11 +59,14 @@ const ValueProposition: React.FC<ValuePropositionProps> = ({ hireServices }) => 
                 </p>
               </div>
             ))}
-            {hireServices.map((service, index) => (
+            {hireServices.map((service) => (
               <div
                 className="p-8 text-center rounded-lg bg-indigo-50"
-                key={index}
+                key={service.title}
               >
+                <div className="flex items-center justify-center w-8 h-8 mx-auto text-white rounded-md md:w-12 md:h-12 bg-primary-600">
+                  <i className={`text-base md:text-xl ${service.icon}`}></i>
+                </div>
                 <h3 className="mt-6 text-lg font-medium text-gray-900">
                   {service.title}
                 </h3>
@@ -63,9 +74,9 @@ const ValueProposition: React.FC<ValuePropositionProps> = ({ hireServices }) => 
                   {service.description}
                 </p>
                 <ul className="flex flex-col items-start justify-start gap-0 mx-auto mt-4 list-disc list-outside w-fit">
-                  {service.features.map((list, featureIndex) => (
+                  {service.features.map((list) => (
                     <li
-                      key={featureIndex}
+                      key={list}
                       className="text-sm text-gray-700 md:text-base"
                     >
                       {list}
