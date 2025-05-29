@@ -6,7 +6,7 @@ export const ProjectDetails = lazy(() => import("./ProjectDetails"));
 export const ServicesDetails = lazy(() => import("./ServicesDetails"));
 export const About = lazy(() => import("./About"));
 export const Training = lazy(() => import("./Training"));
-export const Internship = lazy(() => import("./Intership"));
+export const Internship = lazy(() => import("./Internship"));
 export const HireTalent = lazy(() => import("./HireTalent"));
 export const EarnRefer = lazy(() => import("./EarnRefer"));
 export const PrivacyPolicy = lazy(() => import("./Privacy"));
