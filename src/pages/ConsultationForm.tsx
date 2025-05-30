@@ -21,9 +21,13 @@ function ConsultationForm() {
   const [debugInfo, setDebugInfo] = useState<string | null>(null);
 
   // API base URL for Express server
-  const API_BASE_URL = process.env.NODE_ENV === 'development' 
-    ? '' // Use relative URLs in production (configure proxy in production)
-    : 'http://localhost:3000'; 
+  const API_BASE_URL =
+    process.env.NODE_ENV === "development" ?
+     "http://localhost:3000" : "";
+
+       // Then attempt the actual form submission
+      const apiUrl = `${API_BASE_URL}/api/send-email`;
+    
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,9 +36,6 @@ function ConsultationForm() {
     setDebugInfo(null);
 
     try {
-
-      // Then attempt the actual form submission
-      const apiUrl = `${API_BASE_URL}/api/send-email`;
       
       const res = await fetch(apiUrl, {
         method: 'POST',
