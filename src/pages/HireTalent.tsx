@@ -62,7 +62,7 @@ const HireTalent: React.FC = () => {
       }
 
       await response.json();
-
+      
       setSuccessMessage(
         "🎉 Thank you for your inquiry! Our team will contact you shortly."
       );

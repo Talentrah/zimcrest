@@ -27,8 +27,8 @@ function ConsultationForm() {
 
        // Then attempt the actual form submission
       const apiUrl = `${API_BASE_URL}/api/send-email`;
-    
 
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
