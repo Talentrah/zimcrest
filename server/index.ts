@@ -11,11 +11,24 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
+const allowedOrigins =
+  process.env.NODE_ENV === 'production'
+    ? ['https://www.zimcresttech.com']
+    : ['http://localhost:5173', 'http://localhost:3000'];
+
 app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  origin: ['http://localhost:5173', 'http://localhost:3000'],
-  credentials: true
+  credentials: true,
 }));
+
 app.use(express.json());
 
 // Configure multer for file uploads

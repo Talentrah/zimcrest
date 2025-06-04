@@ -26,9 +26,9 @@ const HireTalent: React.FC = () => {
     budgetRange: "",
   });
 
-  // API base URL for Express server
   const API_BASE_URL =
-    process.env.NODE_ENV === "development" ? "http://localhost:3000" : "";
+    process.env.NODE_ENV === "development" ?
+    "http://localhost:3000" : "";
   const apiUrl = `${API_BASE_URL}/api/hire-talent`;
 
   const handleChange = (
@@ -55,18 +55,14 @@ const HireTalent: React.FC = () => {
         },
         body: JSON.stringify(formData),
       });
-
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        console.error("Server error:", errorData);
+        await response.json().catch(() => ({}));
         alert("Something went wrong. Please try again.");
         return;
       }
 
-      const result = await response.json();
-      console.log("Success:", result);
-
-      // Set success message
+      await response.json();
+      
       setSuccessMessage(
         "🎉 Thank you for your inquiry! Our team will contact you shortly."
       );
@@ -96,7 +92,7 @@ const HireTalent: React.FC = () => {
     if (successMessage) {
       const timeout = setTimeout(() => {
         setSuccessMessage("");
-      }, 8000); // Increased to 8 seconds for better UX
+      }, 8000); 
       return () => clearTimeout(timeout);
     }
   }, [successMessage]);
@@ -110,7 +106,6 @@ const HireTalent: React.FC = () => {
       <div className="min-h-screen bg-gray-50">
         <HeroSection />
 
-        {/* Success Message - Fixed positioning at top */}
         {successMessage && (
           <section className="fixed top-0 left-0 z-50 flex items-center justify-center w-full min-h-screen bg-white/30 backdrop-blur-sm">
             <div className="p-4 mb-6 text-center text-green-800 transition-opacity duration-300 bg-green-100 border border-green-300 rounded-md sm:col-span-2 md:w-full w-[80%] max-w-[700px] h-[300px] flex justify-center items-center relative">
